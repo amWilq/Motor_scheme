@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1007219252449",
+    "project_id": "spring-hope-305122",
+    "storage_bucket": "spring-hope-305122.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1007219252449:android:deae7910821768f05f2ba0",
+        "android_client_info": {
+          "package_name": "com.example.motor_scheme"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1007219252449-j3mkvahmesqevsnmel8cmpd5lcq64fc1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBudO-hLQqDbmAVX_KwCHoVep4JxdOpbQQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1007219252449-j3mkvahmesqevsnmel8cmpd5lcq64fc1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
