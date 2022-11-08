@@ -1,5 +1,6 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'user.dart';
+import 'package:motor_scheme/widgets/pinch-zoom-image.dart';
 
 class PartsView extends StatefulWidget {
   const PartsView({super.key});
@@ -9,114 +10,184 @@ class PartsView extends StatefulWidget {
 }
 
 class _PartsViewState extends State<PartsView> {
-  bool isVisible = true;
-  List<User> users = getUsers();
-
-  static List<User> getUsers() {
-    const data = [
-      {"lp": "1", "nameOfPart": "FLASHER SWITCH", "partNumber": "78111029000"},
-      {
-        "lp": "2",
-        "nameOfPart": "MASTER CYLINDER CPL.",
-        "partNumber": "54802030144"
-      },
-      {
-        "lp": "3",
-        "nameOfPart": "CLUTCH LEVER CPL. BREMBO 06",
-        "partNumber": "54802030144"
-      },
-      {
-        "lp": "4",
-        "nameOfPart": "REP. KIT PISTON 06",
-        "partNumber": "54802030144"
-      },
-      {
-        "lp": "5",
-        "nameOfPart": "COVER HYD. CLUTCH CPL. 2014",
-        "partNumber": "54802030144"
-      },
-      {"lp": "6", "nameOfPart": "VALVE", "partNumber": "54802030144"},
-      {"lp": "7", "nameOfPart": "BOLT KPL.", "partNumber": "54802030144"},
-      {
-        "lp": "8",
-        "nameOfPart": "PŁYN HAMULCOWY DOT5.1, 0,25L.",
-        "partNumber": "54802030144"
-      },
-      {
-        "lp": "9",
-        "nameOfPart": "PROTECTION CAP 06",
-        "partNumber": "54802030144"
-      },
-      {
-        "lp": "10",
-        "nameOfPart": "LEVER SCREW CPL. 06",
-        "partNumber": "54802030144"
-      },
-      {"lp": "11", "nameOfPart": "PUSH ROD CPL.", "partNumber": "54802030144"},
-      {
-        "lp": "12",
-        "nameOfPart": "REAR MIRROR R/S",
-        "partNumber": "54802030144"
-      },
-      {
-        "lp": "13",
-        "nameOfPart": "REAR MIRROR L/S.",
-        "partNumber": "54802030144"
-      },
-      {"lp": "14", "nameOfPart": "MIRROR R/S 98.", "partNumber": "54802030144"},
-      {"lp": "15", "nameOfPart": "MIRROR L/S 98", "partNumber": "54802030144"},
-      {
-        "lp": "16",
-        "nameOfPart": "SUPPORT FOR MIRROR LC4 '98",
-        "partNumber": "54802030144"
-      },
-    ];
-
-    return data.map<User>(User.fromJson).toList();
-  }
-
   @override
   Widget build(BuildContext context) {
+    String data = '''{
+"1": {
+  "part": {
+    "nameOfPart": "FLASHER SWITCH",
+    "partNumber": "78111029000"
+}
+},
+"2": {
+  "part": {
+    "nameOfPart": "MASTER CYLINDER CPL.",
+    "partNumber": "54802030144"
+}
+},
+"3": {
+  "part": {
+      "nameOfPart": "CLUTCH LEVER CPL. BREMBO 06",
+      "partNumber": "54802030144"
+}
+},
+
+"4": {
+  "part": {
+    "nameOfPart": "REP. KIT PISTON 06",
+    "partNumber": "54802030144"
+}
+},
+
+"5": {
+  "part": {
+      "nameOfPart": "COVER HYD. CLUTCH CPL. 2014",
+      "partNumber": "54802030144"
+}
+},
+
+"6": {
+  "part": {
+    "nameOfPart": "SUPPORT FOR MIRROR LC4 '98",
+    "partNumber": "54802030144"
+}
+},
+
+"7": {
+  "part": {
+    "nameOfPart": "PŁYN HAMULCOWY DOT5.1, 0,25L.",
+    "partNumber": "54802030144"
+}
+},
+
+"8": {
+  "part": {
+    "nameOfPart": "REAR MIRROR L/S.",
+    "partNumber": "54802030144"
+}
+},
+
+"9": {
+  "part": {
+    "nameOfPart": "SUPPORT FOR MIRROR LC4 '98",
+    "partNumber": "54802030144"
+}
+},
+
+"10": {
+  "part": {
+   "nameOfPart": "PROTECTION CAP 06",
+        "partNumber": "54802030144"
+}
+},
+
+"11": {
+  "part": {
+    "nameOfPart": "SUPPORT FOR MIRROR LC4 '98",
+    "partNumber": "54802030144"
+}
+}
+
+} ''';
+
+    Map<dynamic, dynamic> json = jsonDecode(data);
+
     return Scaffold(
-      body: NestedScrollView(
-        headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
-          return <Widget>[
-            SliverAppBar(
-              expandedHeight: 400.0,
-              floating: false,
-              pinned: true,
-              flexibleSpace: FlexibleSpaceBar(
-                  centerTitle: true,
-                  title: const Text("WYBÓR CZĘSCI",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16.0,
-                      )),
-                  background: Image.network(
-                    'https://ktmsklep.pl/image/scheme/24e45b8935f0c0889c39f14a7308d60395322f43313635343830323130.png',
-                    fit: BoxFit.cover,
-                  )),
+      body: SafeArea(
+        child: Center(
+          child: GestureDetector(
+            child: ListView(
+              padding: EdgeInsets.zero,
+              scrollDirection: Axis.vertical,
+              children: [
+                Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: const [
+                    InkWell(child: PinchZoomImage()),
+                  ],
+                ),
+                ListTile(
+                  leading: const Text(
+                    '1',
+                  ),
+                  title: Text(json['1']['part']['nameOfPart']),
+                  subtitle: Text(json['1']['part']['partNumber']),
+                ),
+                ListTile(
+                  leading: const Text(
+                    '2',
+                  ),
+                  title: Text(json['2']['part']['nameOfPart']),
+                  subtitle: Text(json['2']['part']['partNumber']),
+                ),
+                ListTile(
+                  leading: const Text(
+                    '3',
+                  ),
+                  title: Text(json['3']['part']['nameOfPart']),
+                  subtitle: Text(json['3']['part']['partNumber']),
+                ),
+                ListTile(
+                  leading: const Text(
+                    '4',
+                  ),
+                  title: Text(json['4']['part']['nameOfPart']),
+                  subtitle: Text(json['4']['part']['partNumber']),
+                ),
+                ListTile(
+                  leading: const Text(
+                    '5',
+                  ),
+                  title: Text(json['5']['part']['nameOfPart']),
+                  subtitle: Text(json['5']['part']['partNumber']),
+                ),
+                ListTile(
+                  leading: const Text(
+                    '6',
+                  ),
+                  title: Text(json['6']['part']['nameOfPart']),
+                  subtitle: Text(json['6']['part']['partNumber']),
+                ),
+                ListTile(
+                  leading: const Text(
+                    '7',
+                  ),
+                  title: Text(json['7']['part']['nameOfPart']),
+                  subtitle: Text(json['7']['part']['partNumber']),
+                ),
+                ListTile(
+                  leading: const Text(
+                    '8',
+                  ),
+                  title: Text(json['8']['part']['nameOfPart']),
+                  subtitle: Text(json['8']['part']['partNumber']),
+                ),
+                ListTile(
+                  leading: const Text(
+                    '9',
+                  ),
+                  title: Text(json['9']['part']['nameOfPart']),
+                  subtitle: Text(json['9']['part']['partNumber']),
+                ),
+                ListTile(
+                  leading: const Text(
+                    '10',
+                  ),
+                  title: Text(json['10']['part']['nameOfPart']),
+                  subtitle: Text(json['10']['part']['partNumber']),
+                ),
+                ListTile(
+                  leading: const Text(
+                    '11',
+                  ),
+                  title: Text(json['11']['part']['nameOfPart']),
+                  subtitle: Text(json['11']['part']['partNumber']),
+                ),
+              ],
             ),
-          ];
-        },
-        body: Center(
-          child: bulidUsers(users),
+          ),
         ),
       ),
     );
   }
-
-  Widget bulidUsers(List<User> users) => ListView.builder(
-        itemBuilder: ((context, index) {
-          final user = users[index];
-          return Card(
-            child: ListTile(
-              leading: Text(user.lp),
-              title: Text(user.nameOfPart),
-              subtitle: Text(user.partNumber),
-            ),
-          );
-        }),
-        itemCount: users.length,
-      );
 }
