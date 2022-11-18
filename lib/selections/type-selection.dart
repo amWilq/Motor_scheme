@@ -1,15 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:motor_scheme/colors/colors.dart';
+import 'package:motor_scheme/main.dart';
 
-import 'schema-list.dart';
+import '../arguments/ExtractArgumentsScreen .dart';
+import '../read-data/data-brand-model.dart';
+import 'parts-selection.dart';
 
-class Selection extends StatefulWidget {
-  const Selection({super.key});
+class TypeSelection extends StatefulWidget {
+  const TypeSelection({super.key});
 
   @override
-  State<Selection> createState() => _SelectionState();
+  State<TypeSelection> createState() => _SelectionState();
 }
 
-class _SelectionState extends State<Selection> {
+class ScreenArguments {
+  final String title;
+  final String message;
+
+  ScreenArguments(this.title, this.message);
+}
+
+class _SelectionState extends State<TypeSelection> {
   List<String> years = [
     '1994',
     '1995',
@@ -64,13 +75,18 @@ class _SelectionState extends State<Selection> {
 
   @override
   Widget build(BuildContext context) {
+    final todo =
+        ModalRoute.of(context)!.settings.arguments as List<BrandDataModel>;
+    print(todo);
     return MaterialApp(
+        title: 'Navigation with Arguments',
         home: Scaffold(
             appBar: AppBar(
               leading: IconButton(
                 icon: const Icon(Icons.arrow_back),
                 onPressed: () => Navigator.of(context).pop(),
               ),
+              backgroundColor: AppColors.ktmColor,
               title: const Text("WYBÓR MODELU"),
               centerTitle: true,
             ),
@@ -129,14 +145,31 @@ class _SelectionState extends State<Selection> {
                 IconButton(
                   icon: const Icon(
                     Icons.arrow_forward_ios,
-                    size: 50.0,
+                    size: 70.0,
                     color: Colors.orange,
                   ),
                   onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => SchemaList()));
+                    Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(
+                        settings: const RouteSettings(name: '/form'),
+                        builder: (context) => const PartsSelection(),
+                      ),
+                    );
+                    // Navigator.push(
+                    //     context,
+                    //     MaterialPageRoute(
+                    //         builder: (context) => const PartsSelection()));
                   },
                 ),
+                Text(selectecdYear!),
+                Text(selectecdModel!),
+                Text(selectecdCategory!),
+                for (var user in todo)
+                  Card(
+                    child: Text(user.name),
+                  ),
+                // Text(todo),
+                // ignore: avoid_print
               ],
             )));
   }

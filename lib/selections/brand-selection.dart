@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:motor_scheme/colors/colors.dart';
 import '../read-data/data-brand-model.dart';
 import 'type-selection.dart';
 
@@ -21,14 +22,14 @@ class _BrandSelectionState extends State<BrandSelection> {
 
   final List<BrandDataModel> brandData = List.generate(brand.length,
       (index) => BrandDataModel(brand[index], '${url[index]}', brand[index]));
-
+  final String todos = 'test';
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          backgroundColor: Colors.blue,
+          backgroundColor: AppColors.ktmColor,
           title: const Text('WYBIERZ TWOJA MARKĘ!'),
         ),
         body: ListView.builder(
@@ -44,7 +45,11 @@ class _BrandSelectionState extends State<BrandSelection> {
                   ),
                   onTap: () {
                     Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => const Selection()));
+                      builder: (context) => const TypeSelection(),
+                      settings: RouteSettings(
+                        arguments: brandData,
+                      ),
+                    ));
                   },
                 ),
               );

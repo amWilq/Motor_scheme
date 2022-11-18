@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:motor_scheme/colors/colors.dart';
+import 'package:motor_scheme/parts-view/test.dart';
+
 import 'selections/brand-selection.dart';
 import 'selections/favorite-selection.dart';
 
@@ -18,23 +21,25 @@ class _MyAppState extends State<MyApp> {
 
   final screens = [
     const BrandSelection(),
-    const FavoriteSelection(),
+    // const FavoriteSelection(),
+    // MyAppTest()
   ];
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      initialRoute: '/',
+      routes: {},
       home: Scaffold(
         body: IndexedStack(
           index: currentIndex,
           children: screens,
         ),
-        // body: screens[currentIndex],
         bottomNavigationBar: BottomNavigationBar(
             iconSize: 32,
             selectedItemColor: Colors.white,
             unselectedItemColor: Colors.white70,
-            backgroundColor: Colors.blue,
+            backgroundColor: AppColors.ktmColor,
             type: BottomNavigationBarType.fixed,
             showUnselectedLabels: false,
             showSelectedLabels: false,

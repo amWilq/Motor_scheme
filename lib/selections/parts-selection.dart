@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:motor_scheme/colors/colors.dart';
 import 'package:motor_scheme/read-data/data-brand-model.dart';
 
 import '../parts-view/parts-view.dart';
 
-class SchemaList extends StatefulWidget {
-  const SchemaList({super.key});
+class PartsSelection extends StatefulWidget {
+  const PartsSelection({super.key});
 
   @override
-  State<SchemaList> createState() => _SchemaListState();
+  State<PartsSelection> createState() => _PartsSelectionState();
 }
 
-class _SchemaListState extends State<SchemaList> {
+class _PartsSelectionState extends State<PartsSelection> {
   static List<String> parts = [
     'PRZÓD AMORTYZATORY, PÓŁKI ZAWIESZENIA',
     'PRZÓD AMORTYZATORY SPIS CZĘŚCI',
@@ -67,16 +68,18 @@ class _SchemaListState extends State<SchemaList> {
       parts.length,
       (index) =>
           BrandDataModel(parts[index], '${imageUrl[index]}', parts[index]));
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: NestedScrollView(
         floatHeaderSlivers: true,
         headerSliverBuilder: (context, innerBoxIsScrolled) => [
-          const SliverAppBar(
+          SliverAppBar(
             floating: true,
-            title: Text("WYBÓR SCHEMATU"),
+            title: const Text("WYBÓR CZEŚCI"),
             centerTitle: true,
+            backgroundColor: AppColors.ktmColor,
           ),
         ],
         body: ListView.builder(
@@ -92,7 +95,8 @@ class _SchemaListState extends State<SchemaList> {
                   ),
                   onTap: () {
                     Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => const PartsView()));
+                      builder: (context) => const PartsView(),
+                    ));
                   },
                 ),
               );

@@ -2,6 +2,9 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:motor_scheme/widgets/pinch-zoom-image.dart';
 
+import '../colors/colors.dart';
+import '../selections/parts-selection.dart';
+
 class PartsView extends StatefulWidget {
   const PartsView({super.key});
 
@@ -87,12 +90,21 @@ class _PartsViewState extends State<PartsView> {
     "partNumber": "54802030144"
 }
 }
-
 } ''';
 
     Map<dynamic, dynamic> json = jsonDecode(data);
 
     return Scaffold(
+        body: NestedScrollView(
+      floatHeaderSlivers: true,
+      headerSliverBuilder: (context, innerBoxIsScrolled) => [
+        SliverAppBar(
+          backgroundColor: AppColors.ktmColor,
+          floating: true,
+          title: const Text("WYBÓR SCHEMATU"),
+          centerTitle: true,
+        ),
+      ],
       body: SafeArea(
         child: Center(
           child: GestureDetector(
@@ -188,6 +200,6 @@ class _PartsViewState extends State<PartsView> {
           ),
         ),
       ),
-    );
+    ));
   }
 }
