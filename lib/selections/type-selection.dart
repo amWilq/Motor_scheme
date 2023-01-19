@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-
+import 'package:motor_scheme/selections/favorite-selection.dart';
+import 'package:motor_scheme/main.dart';
+import 'brand-selection.dart';
 import 'schema-list.dart';
 
 class Selection extends StatefulWidget {
@@ -61,6 +63,19 @@ class _SelectionState extends State<Selection> {
     '450 EXCF',
   ];
   String? selectecdModel = '300 EXC';
+
+  int currentIndex = 0;
+
+  final screens = [
+    const BrandSelection(),
+    const FavoriteSelection(),
+  ];
+
+  void _navigateToFeed() {
+    setState(() {
+      currentIndex = 1;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -126,6 +141,7 @@ class _SelectionState extends State<Selection> {
                     onChanged: (model) => setState(
                           () => selectecdModel = model,
                         )),
+                SizedBox(width:20),                        
                 IconButton(
                   icon: const Icon(
                     Icons.arrow_forward_ios,
@@ -137,6 +153,20 @@ class _SelectionState extends State<Selection> {
                         MaterialPageRoute(builder: (context) => SchemaList()));
                   },
                 ),
+                SizedBox(width:20),                
+                IconButton(
+                  icon: const Icon(
+                    Icons.favorite,
+                    size: 50.0,
+                    color: Colors.orange,
+                  ),
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => FavoriteSelection()));
+                            _navigateToFeed();
+                  },
+                ),
+                SizedBox(width:20),                
               ],
             )));
   }
