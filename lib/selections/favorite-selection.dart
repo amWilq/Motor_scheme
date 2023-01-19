@@ -13,7 +13,7 @@ class _FavoriteSelectionState extends State<FavoriteSelection> {
     return const Scaffold(
       body: Center(
         child: Text(
-          'Lista ulubionych schematow/motórów',
+          'Lista ulubionych schematów/motorów',
           style: TextStyle(fontSize: 48),
         ),
       ),

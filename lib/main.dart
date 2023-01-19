@@ -21,6 +21,11 @@ class _MyAppState extends State<MyApp> {
     const FavoriteSelection(),
   ];
 
+  void _navigateToFeed() {
+    setState(() {
+      currentIndex = 1;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
