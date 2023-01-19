@@ -44,7 +44,7 @@ class _SelectionState extends State<Selection> {
     '2022',
     '2023',
   ];
-  String? selectecdYear = '2016';
+  String selectecdYear = '2016';
 
   List<String> categorys = [
     'Enduro',
@@ -53,7 +53,7 @@ class _SelectionState extends State<Selection> {
     'Adventure',
     'Naked',
   ];
-  String? selectecdCategory = 'Enduro';
+  String selectecdCategory = 'Enduro';
 
   List<String> models = [
     '300 EXC',
@@ -62,19 +62,29 @@ class _SelectionState extends State<Selection> {
     '350 EXCF',
     '450 EXCF',
   ];
-  String? selectecdModel = '300 EXC';
+  String selectecdModel = '300 EXC';
 
   int currentIndex = 0;
 
   final screens = [
     const BrandSelection(),
-    const FavoriteSelection(),
+    const FavoriteSelection(favorites: []),
   ];
 
   void _navigateToFeed() {
     setState(() {
       currentIndex = 1;
     });
+  }
+  List<Map<String, String>> favorites = [];
+
+  void _navigateToFavorites() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => FavoriteSelection(favorites: favorites),
+      ),
+    );
   }
 
   @override
@@ -105,7 +115,7 @@ class _SelectionState extends State<Selection> {
                             ))
                         .toList(),
                     onChanged: (item) => setState(
-                          () => selectecdYear = item,
+                          () => selectecdYear = item!,
                         )),
                 DropdownButtonFormField<String>(
                     decoration: const InputDecoration(
@@ -122,7 +132,7 @@ class _SelectionState extends State<Selection> {
                             ))
                         .toList(),
                     onChanged: (category) => setState(
-                          () => selectecdCategory = category,
+                          () => selectecdCategory = category!,
                         )),
                 DropdownButtonFormField<String>(
                     decoration: const InputDecoration(
@@ -139,7 +149,7 @@ class _SelectionState extends State<Selection> {
                             ))
                         .toList(),
                     onChanged: (model) => setState(
-                          () => selectecdModel = model,
+                          () => selectecdModel = model!,
                         )),
                 SizedBox(width:20),                        
                 IconButton(
@@ -162,8 +172,8 @@ class _SelectionState extends State<Selection> {
                   ),
                   onPressed: () {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => FavoriteSelection()));
-                            _navigateToFeed();
+                        MaterialPageRoute(builder: (context) => const FavoriteSelection(favorites: []))
+                    );
                   },
                 ),
                 SizedBox(width:20),                

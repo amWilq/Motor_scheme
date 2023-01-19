@@ -18,7 +18,7 @@ class _MyAppState extends State<MyApp> {
 
   final screens = [
     const BrandSelection(),
-    const FavoriteSelection(),
+    const FavoriteSelection(favorites: []),
   ];
 
   void _navigateToFeed() {
