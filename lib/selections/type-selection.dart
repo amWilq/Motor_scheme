@@ -7,7 +7,10 @@ import '../read-data/data-brand-model.dart';
 import 'parts-selection.dart';
 
 class TypeSelection extends StatefulWidget {
-  const TypeSelection({super.key});
+  final String selectedBrand;
+  const TypeSelection({
+    required this.selectedBrand,
+  });
 
   @override
   State<TypeSelection> createState() => _SelectionState();
@@ -53,8 +56,6 @@ class _SelectionState extends State<TypeSelection> {
     '2022',
     '2023',
   ];
-  String? selectecdYear = '2016';
-
   List<String> categorys = [
     'Enduro',
     'Cross',
@@ -62,8 +63,6 @@ class _SelectionState extends State<TypeSelection> {
     'Adventure',
     'Naked',
   ];
-  String? selectecdCategory = 'Enduro';
-
   List<String> models = [
     '300 EXC',
     '250 EXC',
@@ -71,77 +70,94 @@ class _SelectionState extends State<TypeSelection> {
     '350 EXCF',
     '450 EXCF',
   ];
+
   String? selectecdModel = '300 EXC';
+  String? selectecdCategory = 'Enduro';
+  String? selectecdYear = '2016';
 
   @override
   Widget build(BuildContext context) {
     final todo =
         ModalRoute.of(context)!.settings.arguments as List<BrandDataModel>;
-    print(todo);
+    final selectedBrand = widget.selectedBrand;
     return MaterialApp(
-        title: 'Navigation with Arguments',
         home: Scaffold(
             appBar: AppBar(
               leading: IconButton(
                 icon: const Icon(Icons.arrow_back),
                 onPressed: () => Navigator.of(context).pop(),
               ),
-              backgroundColor: AppColors.ktmColor,
-              title: const Text("WYBÓR MODELU"),
+              backgroundColor: selectedBrand == 'KTM'
+                  ? AppColors.ktmColor
+                  : selectedBrand == 'Suzuki'
+                      ? AppColors.suzukiColor
+                      : selectedBrand == 'Honda'
+                          ? AppColors.hondaColor
+                          : selectedBrand == 'Yamaha'
+                              ? AppColors.yamahaColor
+                              : selectedBrand == 'Kawasaki'
+                                  ? AppColors.kawasakiColor
+                                  : Colors.grey,
+              title: Text('WYBÓR MODELU MARKI: $selectedBrand'),
               centerTitle: true,
             ),
             body: ListView(
               children: <Widget>[
-                DropdownButtonFormField<String>(
-                    decoration: const InputDecoration(
-                        labelText: '01. WYBIERZ ROCZNIK:'),
-                    value: selectecdYear,
-                    items: years
-                        .map((year) => DropdownMenuItem<String>(
-                              value: year,
-                              child: Text(
-                                year,
-                                style: TextStyle(fontSize: 24),
-                              ),
-                            ))
-                        .toList(),
-                    onChanged: (item) => setState(
-                          () => selectecdYear = item,
-                        )),
-                DropdownButtonFormField<String>(
-                    decoration: const InputDecoration(
-                      labelText: '02. WYBIERZ TYP POJAZDU:',
-                    ),
-                    value: selectecdCategory,
-                    items: categorys
-                        .map((category) => DropdownMenuItem<String>(
-                              value: category,
-                              child: Text(
-                                category,
-                                style: const TextStyle(fontSize: 24),
-                              ),
-                            ))
-                        .toList(),
-                    onChanged: (category) => setState(
-                          () => selectecdCategory = category,
-                        )),
-                DropdownButtonFormField<String>(
-                    decoration: const InputDecoration(
-                      labelText: '03. WYBIERZ MODEL:',
-                    ),
-                    value: selectecdModel,
-                    items: models
-                        .map((model) => DropdownMenuItem<String>(
-                              value: model,
-                              child: Text(
-                                model,
-                                style: const TextStyle(fontSize: 24),
-                              ),
-                            ))
-                        .toList(),
-                    onChanged: (model) => setState(
-                          () => selectecdModel = model,
-                        )),
+                Center(
+                  child: DropdownButtonFormField<String>(
+                      decoration: const InputDecoration(
+                          labelText: '01. WYBIERZ ROCZNIK:'),
+                      value: selectecdYear,
+                      items: years
+                          .map((year) => DropdownMenuItem<String>(
+                                value: year,
+                                child: Text(
+                                  year,
+                                  style: TextStyle(fontSize: 24),
+                                ),
+                              ))
+                          .toList(),
+                      onChanged: (item) => setState(
+                            () => selectecdYear = item,
+                          )),
+                ),
+                Center(
+                  child: DropdownButtonFormField<String>(
+                      decoration: const InputDecoration(
+                        labelText: '02. WYBIERZ TYP POJAZDU:',
+                      ),
+                      value: selectecdCategory,
+                      items: categorys
+                          .map((category) => DropdownMenuItem<String>(
+                                value: category,
+                                child: Text(
+                                  category,
+                                  style: const TextStyle(fontSize: 24),
+                                ),
+                              ))
+                          .toList(),
+                      onChanged: (category) => setState(
+                            () => selectecdCategory = category,
+                          )),
+                ),
+                Center(
+                    child: DropdownButtonFormField<String>(
+                        decoration: const InputDecoration(
+                          labelText: '03. WYBIERZ MODEL:',
+                        ),
+                        value: selectecdModel,
+                        items: models
+                            .map((model) => DropdownMenuItem<String>(
+                                  value: model,
+                                  child: Text(
+                                    model,
+                                    style: const TextStyle(fontSize: 24),
+                                  ),
+                                ))
+                            .toList(),
+                        onChanged: (model) => setState(
+                              () => selectecdModel = model,
+                            ))),
                 IconButton(
                   icon: const Icon(
                     Icons.arrow_forward_ios,
@@ -152,24 +168,15 @@ class _SelectionState extends State<TypeSelection> {
                     Navigator.of(context).pushReplacement(
                       MaterialPageRoute(
                         settings: const RouteSettings(name: '/form'),
-                        builder: (context) => const PartsSelection(),
+                        builder: (context) => PartsSelection(
+                            selectedBrand: selectedBrand,
+                            selectecdYear: selectecdYear!,
+                            selectecdModel: selectecdModel!,
+                            selectecdCategory: selectecdCategory!),
                       ),
                     );
-                    // Navigator.push(
-                    //     context,
-                    //     MaterialPageRoute(
-                    //         builder: (context) => const PartsSelection()));
                   },
                 ),
-                Text(selectecdYear!),
-                Text(selectecdModel!),
-                Text(selectecdCategory!),
-                for (var user in todo)
-                  Card(
-                    child: Text(user.name),
-                  ),
-                // Text(todo),
-                // ignore: avoid_print
               ],
             )));
   }

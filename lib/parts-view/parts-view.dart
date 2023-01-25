@@ -118,83 +118,12 @@ class _PartsViewState extends State<PartsView> {
                     InkWell(child: PinchZoomImage()),
                   ],
                 ),
-                ListTile(
-                  leading: const Text(
-                    '1',
+                for (var i = 1; i < json.length + 1; i++)
+                  ListTile(
+                    leading: Text(i.toString()),
+                    title: Text(json[i.toString()]['part']['nameOfPart']),
+                    subtitle: Text(json[i.toString()]['part']['partNumber']),
                   ),
-                  title: Text(json['1']['part']['nameOfPart']),
-                  subtitle: Text(json['1']['part']['partNumber']),
-                ),
-                ListTile(
-                  leading: const Text(
-                    '2',
-                  ),
-                  title: Text(json['2']['part']['nameOfPart']),
-                  subtitle: Text(json['2']['part']['partNumber']),
-                ),
-                ListTile(
-                  leading: const Text(
-                    '3',
-                  ),
-                  title: Text(json['3']['part']['nameOfPart']),
-                  subtitle: Text(json['3']['part']['partNumber']),
-                ),
-                ListTile(
-                  leading: const Text(
-                    '4',
-                  ),
-                  title: Text(json['4']['part']['nameOfPart']),
-                  subtitle: Text(json['4']['part']['partNumber']),
-                ),
-                ListTile(
-                  leading: const Text(
-                    '5',
-                  ),
-                  title: Text(json['5']['part']['nameOfPart']),
-                  subtitle: Text(json['5']['part']['partNumber']),
-                ),
-                ListTile(
-                  leading: const Text(
-                    '6',
-                  ),
-                  title: Text(json['6']['part']['nameOfPart']),
-                  subtitle: Text(json['6']['part']['partNumber']),
-                ),
-                ListTile(
-                  leading: const Text(
-                    '7',
-                  ),
-                  title: Text(json['7']['part']['nameOfPart']),
-                  subtitle: Text(json['7']['part']['partNumber']),
-                ),
-                ListTile(
-                  leading: const Text(
-                    '8',
-                  ),
-                  title: Text(json['8']['part']['nameOfPart']),
-                  subtitle: Text(json['8']['part']['partNumber']),
-                ),
-                ListTile(
-                  leading: const Text(
-                    '9',
-                  ),
-                  title: Text(json['9']['part']['nameOfPart']),
-                  subtitle: Text(json['9']['part']['partNumber']),
-                ),
-                ListTile(
-                  leading: const Text(
-                    '10',
-                  ),
-                  title: Text(json['10']['part']['nameOfPart']),
-                  subtitle: Text(json['10']['part']['partNumber']),
-                ),
-                ListTile(
-                  leading: const Text(
-                    '11',
-                  ),
-                  title: Text(json['11']['part']['nameOfPart']),
-                  subtitle: Text(json['11']['part']['partNumber']),
-                ),
               ],
             ),
           ),

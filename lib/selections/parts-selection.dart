@@ -5,7 +5,16 @@ import 'package:motor_scheme/read-data/data-brand-model.dart';
 import '../parts-view/parts-view.dart';
 
 class PartsSelection extends StatefulWidget {
-  const PartsSelection({super.key});
+  final String selectecdYear;
+  final String selectecdModel;
+  final String selectecdCategory;
+  final String selectedBrand;
+
+  const PartsSelection(
+      {required this.selectedBrand,
+      required this.selectecdYear,
+      required this.selectecdModel,
+      required this.selectecdCategory});
 
   @override
   State<PartsSelection> createState() => _PartsSelectionState();
@@ -71,13 +80,20 @@ class _PartsSelectionState extends State<PartsSelection> {
 
   @override
   Widget build(BuildContext context) {
+    final selectecdYear = widget.selectecdYear;
+    final selectecdModel = widget.selectecdModel;
+    final selectecdCategory = widget.selectecdCategory;
+    final selectedBrand = widget.selectedBrand;
+
+    Text("Selected year: $selectecdYear");
     return Scaffold(
       body: NestedScrollView(
         floatHeaderSlivers: true,
         headerSliverBuilder: (context, innerBoxIsScrolled) => [
           SliverAppBar(
             floating: true,
-            title: const Text("WYBÓR CZEŚCI"),
+            title: Text(
+                'Wybór części dla:\n$selectedBrand $selectecdModel $selectecdYear'),
             centerTitle: true,
             backgroundColor: AppColors.ktmColor,
           ),

@@ -39,7 +39,7 @@ class _MyAppState extends State<MyApp> {
             iconSize: 32,
             selectedItemColor: Colors.white,
             unselectedItemColor: Colors.white70,
-            backgroundColor: AppColors.ktmColor,
+            backgroundColor: Colors.grey,
             type: BottomNavigationBarType.fixed,
             showUnselectedLabels: false,
             showSelectedLabels: false,
