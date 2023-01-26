@@ -73,7 +73,7 @@ class _SelectionState extends State<TypeSelection> {
 
   String? selectecdModel = '300 EXC';
   String? selectecdCategory = 'Enduro';
-  String? selectecdYear = '2016';
+  String? selectecdYear = '2023';
 
   @override
   Widget build(BuildContext context) {

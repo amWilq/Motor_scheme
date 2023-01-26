@@ -1,109 +1,148 @@
 [
-  {
-      "id": 1,
-      "mark": "KTM",
-      "category": "Enduro",
-      "model": "EXC",
-      "year": "2023",
-      "part": [
-          {
-              "id": 1,
-              "nameTypePart": "PRZÓD AMORTYZATORY, PÓŁKI ZAWIESZENIA",
-              "imageUrl": "assets/images/01.gif",
-              "parts": [
-                  {
-                      "id": 1,
-                      "namePart": "AMORTYZATOR PRZEDNI 250/300 EXC, XCW 16",
-                      "partNumber": "14187P6301"
-                  }
-              ]
-          }
-      ]
-  },
-  {
-      "id": 2,
-      "mark": "KTM",
-      "category": "Enduro",
-      "model": "EXC",
-      "year": "2022",
-      "part": [
-          {
-              "id": 1,
-              "nameTypePart": "PRZÓD AMORTYZATORY SPIS CZĘŚCI",
-              "imageUrl": "assets/images/01.gif",
-              "parts": [
-                  {
-                      "id": 1,
-                      "namePart": "AMORTYZATOR PRZEDNI 250/300 EXC, XCW 16",
-                      "partNumber": "14187P6301"
-                  },
-                  {
-                      "id": 2,
-                      "namePart": "AMORTYZATOR PRZEDNI 250/300 EXC, XCW 16",
-                      "partNumber": "14187P6301"
-                  },
-                  {
-                      "id": 3,
-                      "namePart": "AMORTYZATOR PRZEDNI 250/300 EXC, XCW 16",
-                      "partNumber": "14187P6301"
-                  }
-              ]
-          },
-          {
-              "id": 2,
-              "nameTypePart": "TYL AMORTYZATORY SPIS CZĘŚCI",
-              "imageUrl": "assets/images/01.gif",
-              "parts": [
-                  {
-                      "id": 1,
-                      "namePart": "AMORTYZATOR PRZEDNI 250/300 EXC, XCW 16",
-                      "partNumber": "14187P6301"
-                  },
-                  {
-                      "id": 2,
-                      "namePart": "AMORTYZATOR PRZEDNI 250/300 EXC, XCW 16",
-                      "partNumber": "14187P6301"
-                  },
-                  {
-                      "id": 3,
-                      "namePart": "AMORTYZATOR PRZEDNI 250/300 EXC, XCW 16",
-                      "partNumber": "14187P6301"
-                  }
-              ]
-          },
-          {
-              "id": 3,
-              "nameTypePart": "KIEROWNICA I OSPRZĘT",
-              "imageUrl": "assets/images/01.gif",
-              "parts": [
-                  {
-                      "id": 1,
-                      "namePart": "AMORTYZATOR PRZEDNI 250/300 EXC, XCW 16",
-                      "partNumber": "14187P6301"
-                  }
-              ]
-          }
-      ]
-  },
-      {
-      "id": 2,
-      "mark": "KTM",
-      "category": "Enduro",
-      "model": "EXC",
-      "year": "2022",
-      "part": [
-          {
-              "id": 1,
-              "nameTypePart": "PRZÓD AMORTYZATORY SPIS CZĘŚCI",
-              "imageUrl": "assets/images/01.gif",
-              "parts": [
-                  {
-                      "id": 1,
-                      "namePart": "AMORTYZATOR PRZEDNI 250/300 EXC, XCW 16",
-                      "partNumber": "14187P6301"
-                  }
-              ]
-          }
-      ]
-  }
+    {
+        "id": 1,
+        "mark": "KTM",
+        "category": "Enduro",
+        "model": "300 EXC",
+        "year": "2023",
+        "part": [
+            {
+                "id": 1,
+                "nameTypePart": "1PRZÓD AMORTYZATORY, PÓŁKI ZAWIESZENIA",
+                "imageUrl": "assets/images/01.gif",
+                "parts": [
+                    {
+                        "id": 1,
+                        "namePart": "AMORTYZATOR PRZEDNI 250/300 EXC, XCW 16",
+                        "partNumber": "14187P6301"
+                    }
+                ]
+            },
+            {
+                "id": 2,
+                "nameTypePart": "1TYL AMORTYZATORY SPIS CZĘŚCI",
+                "imageUrl": "assets/images/01.gif",
+                "parts": [
+                    {
+                        "id": 1,
+                        "namePart": "test3",
+                        "partNumber": "14dsadsa"
+                    },
+                    {
+                        "id": 2,
+                        "namePart": "test2 ",
+                        "partNumber": "14187dasdsaP6301"
+                    },
+                    {
+                        "id": 3,
+                        "namePart": "test3 ",
+                        "partNumber": "141das87P6301"
+                    },
+                    {
+                        "id": 4,
+                        "namePart": "test4 ",
+                        "partNumber": "141das87P6301"
+                    },                    {
+                        "id": 5,
+                        "namePart": "test5 ",
+                        "partNumber": "141dsa87P6301"
+                    },                    {
+                        "id": 6,
+                        "namePart": "test6 ",
+                        "partNumber": "141das87P6301"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "mark": "KTM",
+        "category": "Enduro",
+        "model": "300 EXC",
+        "year": "2022",
+        "part": [
+            {
+                "id": 1,
+                "nameTypePart": "2PRZÓD AMORTYZATORY, PÓŁKI ZAWIESZENIA",
+                "imageUrl": "assets/images/01.gif",
+                "parts": [
+                    {
+                        "id": 1,
+                        "namePart": "AMORTYZATOR PRZEDNI 250/300 EXC, XCW 16",
+                        "partNumber": "14187P6301"
+                    }
+                ]
+            },
+            {
+                "id": 2,
+                "nameTypePart": "2TYL AMORTYZATORY SPIS CZĘŚCI",
+                "imageUrl": "assets/images/01.gif",
+                "parts": [
+                    {
+                        "id": 1,
+                        "namePart": "AMORTYZATOR PRZEDNI 250/300 EXC, XCW 16",
+                        "partNumber": "14187P6301"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "mark": "KTM",
+        "category": "Enduro",
+        "model": "300 EXC",
+        "year": "2021",
+        "part": [
+            {
+                "id": 1,
+                "nameTypePart": "TEST3",
+                "imageUrl": "assets/images/01.gif",
+                "parts": [
+                    {
+                        "id": 1,
+                        "namePart": "AMORTYZATOR PRZEDNI 250/300 EXC, XCW 16",
+                        "partNumber": "14187P6301"
+                    }
+                ]
+            },
+            {
+                "id": 2,
+                "nameTypePart": "TEST4",
+                "imageUrl": "assets/images/02.gif",
+                "parts": [
+                    {
+                        "id": 1,
+                        "namePart": "AMORTYZATOR PRZEDNI 250/300 EXC, XCW 16",
+                        "partNumber": "14187P6301"
+                    }
+                ]
+            },
+            {
+                "id": 3,
+                "nameTypePart": "TEST5",
+                "imageUrl": "assets/images/03.gif",
+                "parts": [
+                    {
+                        "id": 1,
+                        "namePart": "AMORTYZATOR PRZEDNI 250/300 EXC, XCW 16",
+                        "partNumber": "14187P6301"
+                    }
+                ]
+            },
+            {
+                "id": 4,
+                "nameTypePart": "TEST6",
+                "imageUrl": "assets/images/04.gif",
+                "parts": [
+                    {
+                        "id": 1,
+                        "namePart": "AMORTYZATOR PRZEDNI 250/300 EXC, XCW 16",
+                        "partNumber": "14187P6301"
+                    }
+                ]
+            }
+        ]
+    }
 ]

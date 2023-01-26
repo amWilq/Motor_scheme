@@ -6,7 +6,8 @@ import '../colors/colors.dart';
 import '../selections/parts-selection.dart';
 
 class PartsView extends StatefulWidget {
-  const PartsView({super.key});
+  final List parts;
+  PartsView({required this.parts});
 
   @override
   State<PartsView> createState() => _PartsViewState();
@@ -93,7 +94,8 @@ class _PartsViewState extends State<PartsView> {
 } ''';
 
     Map<dynamic, dynamic> json = jsonDecode(data);
-
+    final parts = widget.parts;
+    print(parts);
     return Scaffold(
         body: NestedScrollView(
       floatHeaderSlivers: true,
@@ -118,11 +120,11 @@ class _PartsViewState extends State<PartsView> {
                     InkWell(child: PinchZoomImage()),
                   ],
                 ),
-                for (var i = 1; i < json.length + 1; i++)
+                for (var i = 0; i < parts.length; i++)
                   ListTile(
-                    leading: Text(i.toString()),
-                    title: Text(json[i.toString()]['part']['nameOfPart']),
-                    subtitle: Text(json[i.toString()]['part']['partNumber']),
+                    leading: Text((i + 1).toString()),
+                    title: Text(parts[i]['namePart']),
+                    subtitle: Text(parts[i]['partNumber']),
                   ),
               ],
             ),

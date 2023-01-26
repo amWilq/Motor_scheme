@@ -17,6 +17,28 @@
                         "partNumber": "14187P6301"
                     }
                 ]
+            },
+            {
+                "id": 2,
+                "nameTypePart": "TYL AMORTYZATORY SPIS CZĘŚCI",
+                "imageUrl": "assets/images/01.gif",
+                "parts": [
+                    {
+                        "id": 1,
+                        "namePart": "AMORTYZATOR PRZEDNI 250/300 EXC, XCW 16",
+                        "partNumber": "14187P6301"
+                    },
+                    {
+                        "id": 2,
+                        "namePart": "AMORTYZATOR PRZEDNI 250/300 EXC, XCW 16",
+                        "partNumber": "14187P6301"
+                    },
+                    {
+                        "id": 3,
+                        "namePart": "AMORTYZATOR PRZEDNI 250/300 EXC, XCW 16",
+                        "partNumber": "14187P6301"
+                    }
+                ]
             }
         ]
     },
