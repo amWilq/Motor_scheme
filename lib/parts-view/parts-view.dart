@@ -1,13 +1,12 @@
-import 'dart:convert';
+import 'package:easy_image_viewer/easy_image_viewer.dart';
 import 'package:flutter/material.dart';
-import 'package:motor_scheme/widgets/pinch-zoom-image.dart';
-
 import '../colors/colors.dart';
-import '../selections/parts-selection.dart';
 
 class PartsView extends StatefulWidget {
   final List parts;
-  PartsView({required this.parts});
+  final String partsImageUrl;
+
+  PartsView({required this.parts, required this.partsImageUrl});
 
   @override
   State<PartsView> createState() => _PartsViewState();
@@ -16,86 +15,9 @@ class PartsView extends StatefulWidget {
 class _PartsViewState extends State<PartsView> {
   @override
   Widget build(BuildContext context) {
-    String data = '''{
-"1": {
-  "part": {
-    "nameOfPart": "FLASHER SWITCH",
-    "partNumber": "78111029000"
-}
-},
-"2": {
-  "part": {
-    "nameOfPart": "MASTER CYLINDER CPL.",
-    "partNumber": "54802030144"
-}
-},
-"3": {
-  "part": {
-      "nameOfPart": "CLUTCH LEVER CPL. BREMBO 06",
-      "partNumber": "54802030144"
-}
-},
-
-"4": {
-  "part": {
-    "nameOfPart": "REP. KIT PISTON 06",
-    "partNumber": "54802030144"
-}
-},
-
-"5": {
-  "part": {
-      "nameOfPart": "COVER HYD. CLUTCH CPL. 2014",
-      "partNumber": "54802030144"
-}
-},
-
-"6": {
-  "part": {
-    "nameOfPart": "SUPPORT FOR MIRROR LC4 '98",
-    "partNumber": "54802030144"
-}
-},
-
-"7": {
-  "part": {
-    "nameOfPart": "PŁYN HAMULCOWY DOT5.1, 0,25L.",
-    "partNumber": "54802030144"
-}
-},
-
-"8": {
-  "part": {
-    "nameOfPart": "REAR MIRROR L/S.",
-    "partNumber": "54802030144"
-}
-},
-
-"9": {
-  "part": {
-    "nameOfPart": "SUPPORT FOR MIRROR LC4 '98",
-    "partNumber": "54802030144"
-}
-},
-
-"10": {
-  "part": {
-   "nameOfPart": "PROTECTION CAP 06",
-        "partNumber": "54802030144"
-}
-},
-
-"11": {
-  "part": {
-    "nameOfPart": "SUPPORT FOR MIRROR LC4 '98",
-    "partNumber": "54802030144"
-}
-}
-} ''';
-
-    Map<dynamic, dynamic> json = jsonDecode(data);
     final parts = widget.parts;
-    print(parts);
+    final partsImageUrl = widget.partsImageUrl;
+
     return Scaffold(
         body: NestedScrollView(
       floatHeaderSlivers: true,
@@ -114,12 +36,20 @@ class _PartsViewState extends State<PartsView> {
               padding: EdgeInsets.zero,
               scrollDirection: Axis.vertical,
               children: [
-                Column(
-                  mainAxisSize: MainAxisSize.max,
-                  children: const [
-                    InkWell(child: PinchZoomImage()),
-                  ],
-                ),
+                Center(
+                    child: GestureDetector(
+                  onTap: () {
+                    showImageViewer(context, Image.asset(partsImageUrl).image,
+                        swipeDismissible: false);
+                  },
+                  child: Container(
+                    height: 150,
+                    child: Image.asset(
+                      partsImageUrl,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                )),
                 for (var i = 0; i < parts.length; i++)
                   ListTile(
                     leading: Text((i + 1).toString()),

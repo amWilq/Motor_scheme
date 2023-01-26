@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:motor_scheme/colors/colors.dart';
-import 'package:motor_scheme/main.dart';
-
-import '../arguments/ExtractArgumentsScreen .dart';
-import '../read-data/data-brand-model.dart';
 import 'parts-selection.dart';
 
 class TypeSelection extends StatefulWidget {
@@ -77,8 +73,6 @@ class _SelectionState extends State<TypeSelection> {
 
   @override
   Widget build(BuildContext context) {
-    final todo =
-        ModalRoute.of(context)!.settings.arguments as List<BrandDataModel>;
     final selectedBrand = widget.selectedBrand;
     return MaterialApp(
         home: Scaffold(

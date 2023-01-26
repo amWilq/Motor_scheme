@@ -5,11 +5,13 @@
         "category": "Enduro",
         "model": "300 EXC",
         "year": "2023",
+        "partsImageUrl": "assets/images/01.gif",
         "part": [
             {
                 "id": 1,
                 "nameTypePart": "1PRZÓD AMORTYZATORY, PÓŁKI ZAWIESZENIA",
                 "imageUrl": "assets/images/01.gif",
+
                 "parts": [
                     {
                         "id": 1,
@@ -23,6 +25,7 @@
                 "nameTypePart": "1TYL AMORTYZATORY SPIS CZĘŚCI",
                 "imageUrl": "assets/images/01.gif",
                 "parts": [
+    
                     {
                         "id": 1,
                         "namePart": "test3",
@@ -61,6 +64,7 @@
         "category": "Enduro",
         "model": "300 EXC",
         "year": "2022",
+        "partsImageUrl": "assets/images/01.gif",
         "part": [
             {
                 "id": 1,
@@ -94,6 +98,7 @@
         "category": "Enduro",
         "model": "300 EXC",
         "year": "2021",
+        "partsImageUrl": "assets/images/01.gif",
         "part": [
             {
                 "id": 1,
@@ -110,7 +115,7 @@
             {
                 "id": 2,
                 "nameTypePart": "TEST4",
-                "imageUrl": "assets/images/02.gif",
+                "imageUrl": "assets/images/01.gif",
                 "parts": [
                     {
                         "id": 1,
@@ -122,7 +127,7 @@
             {
                 "id": 3,
                 "nameTypePart": "TEST5",
-                "imageUrl": "assets/images/03.gif",
+                "imageUrl": "assets/images/01.gif",
                 "parts": [
                     {
                         "id": 1,
@@ -134,7 +139,7 @@
             {
                 "id": 4,
                 "nameTypePart": "TEST6",
-                "imageUrl": "assets/images/04.gif",
+                "imageUrl": "assets/images/01.gif",
                 "parts": [
                     {
                         "id": 1,

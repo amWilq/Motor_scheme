@@ -10,10 +10,10 @@ class PartData {
     required String imageUrl,
     required List parts,
   }) {
-    this._id = id;
-    this._nameTypePart = nameTypePart;
-    this._imageUrl = imageUrl;
-    this._parts = parts;
+    _id = id;
+    _nameTypePart = nameTypePart;
+    _imageUrl = imageUrl;
+    _parts = parts;
   }
 
   int get id => _id;

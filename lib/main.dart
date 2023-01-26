@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:motor_scheme/colors/colors.dart';
-import 'package:motor_scheme/parts-view/test.dart';
 
 import 'selections/brand-selection.dart';
 import 'selections/favorite-selection.dart';
@@ -21,8 +20,6 @@ class _MyAppState extends State<MyApp> {
 
   final screens = [
     const BrandSelection(),
-    // const FavoriteSelection(),
-    // MyAppTest()
   ];
 
   @override
