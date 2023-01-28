@@ -3,59 +3,976 @@
         "id": 1,
         "mark": "KTM",
         "category": "Enduro",
-        "model": "300 EXC",
-        "year": "2023",
-        "partsImageUrl": "assets/images/01.gif",
+        "model": "150 EXC",
+        "year": "2020",
+        "partsImageUrl": "assets/images/KTM_ENDURO_150 EXC_2020.png",
         "part": [
             {
                 "id": 1,
-                "nameTypePart": "1PRZÓD AMORTYZATORY, PÓŁKI ZAWIESZENIA",
+                "nameTypePart": "PRZÓD AMORTYZATORY SPIS CZĘŚCI",
                 "imageUrl": "assets/images/01.gif",
 
                 "parts": [
                     {
-                        "id": 1,
-                        "namePart": "AMORTYZATOR PRZEDNI 250/300 EXC, XCW 16",
-                        "partNumber": "14187P6301"
-                    }
-                ]
+                            "id": 1,
+                            "namePart": "AXLECLAMP OC RIGHT CPL. WITH TUBE",
+                            "partNumber": "48601933S1"
+                        },
+                    {
+                            "id": 2,
+                            "namePart": "AXLECLAMP OC LEFT CPL. WITH TUBE",
+                            "partNumber": "48601932S1"
+                        },
+                    {
+                            "id": 3,
+                            "namePart": "fork outer tube 49.13x577 dt54 db60",
+                            "partNumber": "48602096"
+                        },
+                    {
+                            "id": 3,
+                            "namePart": "fork outer tube 49.13x577 dt54 db60",
+                            "partNumber": "48601671 => 48602096"
+                        },
+                    {
+                            "id": 4,
+                            "namePart": "SPRING 5,2N/MM SET",
+                            "partNumber": "91410106S"
+                        },
+                    {
+                            "id": 4,
+                            "namePart": "Sprężyna 5,0N/MM SET D=4,9MM",
+                            "partNumber": "91410105S"
+                        },
+                    {
+                            "id": 4,
+                            "namePart": "Sprężyna 4,8N/MM SET D=4,9MM",
+                            "partNumber": "91410104S"
+                        },
+                    {
+                            "id": 4,
+                            "namePart": "Sprężyna amortyzatora L= 470 4,6 N/MM SET",
+                            "partNumber": "91410103S"
+                        },
+                    {
+                            "id": 4,
+                            "namePart": "Sprężyna 4,4N/MM SET D=4,9MM",
+                            "partNumber": "91410102S"
+                        },
+                    {
+                            "id": 4,
+                            "namePart": "Sprężyna 4,2N/MM SET D=4,9MM",
+                            "partNumber": "91410101S"
+                        },
+                    {
+                            "id": 4,
+                            "namePart": "Sprężyna 4,0N/MM SET D=4,9MM",
+                            "partNumber": "91410100S"
+                        },
+                    {
+                            "id": 4,
+                            "namePart": "Sprężyna 3,8N/MM SET D=4,9MM",
+                            "partNumber": "91410099S"
+                        },
+                    {
+                            "id": 4,
+                            "namePart": "Spring (43,8) 3,6-470",
+                            "partNumber": "91410098S"
+                        },
+                    {
+                            "id": 5,
+                            "namePart": "Przekładka 43X35X2,5",
+                            "partNumber": "48600456"
+                        },
+                    {
+                            "id": 5,
+                            "namePart": "Przekładka 43X35X5",
+                            "partNumber": "48600457"
+                        },
+                    {
+                            "id": 5,
+                            "namePart": "Przekładka 43X35X1,5",
+                            "partNumber": "48600458"
+                        },
+                    {
+                            "id": 6,
+                            "namePart": "Screw cap M51x1,5 rebound cpl.",
+                            "partNumber": "48601960S"
+                        },
+                    {
+                            "id": 7,
+                            "namePart": "Screw cap M51x1,5 compression ",
+                            "partNumber": "48601961S"
+                        },
+                    {
+                            "id": 8,
+                            "namePart": "ADJUSTER KIT SCREW CAP",
+                            "partNumber": "RP10021 => RP10021T"
+                        },
+                    {
+                            "id": 8,
+                            "namePart": "ADJUSTER KIT SCREW CAP",
+                            "partNumber": "RP10021T"
+                        },
+                    {
+                            "id": 9,
+                            "namePart": "Uszczelniacz nakrętki amortyzatora / O-ring NBR 46 X 2",
+                            "partNumber": "48600048"
+                        },
+                    {
+                            "id": 10,
+                            "namePart": "SEAL KIT 48MM SKF BLACK",
+                            "partNumber": "RP10048T"
+                        },
+                    {
+                            "id": 10,
+                            "namePart": "SEAL KIT 48MM SKF BLACK",
+                            "partNumber": "RP10012 => RP10048T"
+                        },
+                    {
+                            "id": 11,
+                            "namePart": "GUIDE BUSHING SET FORK 48MM",
+                            "partNumber": "R14047 => R14047T"
+                        },
+                    {
+                            "id": 11,
+                            "namePart": "GUIDE BUSHING SET FORK 48MM",
+                            "partNumber": "R14047T"
+                        },
+                    {
+                            "id": 12,
+                            "namePart": "TUBE, INCLUDING SCREW SLEEVE WITH HOLE",
+                            "partNumber": "48600763S5"
+                        },
+                    {
+                            "id": 13,
+                            "namePart": "TUBE WITH SCREWSLEEVE",
+                            "partNumber": "48600763S6"
+                        },
+                    {
+                            "id": 14,
+                            "namePart": "DU tuleja FOR tłoczek",
+                            "partNumber": "48600430"
+                        },
+                    {
+                            "id": 15,
+                            "namePart": "TAP COMPRESSION CPL.",
+                            "partNumber": "48601843S3"
+                        },
+                    {
+                            "id": 16,
+                            "namePart": "Nakrętka M6X0,5 REBOUND",
+                            "partNumber": "40540486"
+                        },
+                    {
+                            "id": 17,
+                            "namePart": "MIDVALVE PISTON ASSEMBLY D23",
+                            "partNumber": "48602002S"
+                        },
+                    {
+                            "id": 18,
+                            "namePart": "Zawór Sprężyna C=0,4",
+                            "partNumber": "48600382"
+                        },
+                    {
+                            "id": 19,
+                            "namePart": "Tłoczek odbicia",
+                            "partNumber": "48600576"
+                        },
+                    {
+                            "id": 20,
+                            "namePart": "Uszczelka O-ring 6X1,2 NBR",
+                            "partNumber": "48600299"
+                        },
+                    {
+                            "id": 21,
+                            "namePart": "Odbojnik i prowadnica sprężyny",
+                            "partNumber": "48600578S"
+                        },
+                    {
+                            "id": 22,
+                            "namePart": "Wspornik sprężyny",
+                            "partNumber": "48601298"
+                        },
+                    {
+                            "id": 23,
+                            "namePart": "Iglica regulacyjna komplet",
+                            "partNumber": "48600277S"
+                        },
+                    {
+                            "id": 24,
+                            "namePart": "Iglica regulacji kompresji komplet",
+                            "partNumber": "48601558S"
+                        },
+                    {
+                            "id": 25,
+                            "namePart": "Tłoczek D=12 L=554 ALU",
+                            "partNumber": "48600568"
+                        },
+                    {
+                            "id": 26,
+                            "namePart": "Adjustment tube 6x524,6",
+                            "partNumber": "48602036"
+                        },
+                    {
+                            "id": 27,
+                            "namePart": "Odbojnik hydrauliczny L200",
+                            "partNumber": "48601556S"
+                        },
+                    {
+                            "id": 28,
+                            "namePart": "Nakrętka M6X0,5 D=2",
+                            "partNumber": "48600163"
+                        },
+                    {
+                            "id": 29,
+                            "namePart": "Sprężyna zaworu zwrotnego D=0,7",
+                            "partNumber": "48600202"
+                        },
+                    {
+                            "id": 30,
+                            "namePart": "PISTON 6X27,3X9 COMPRESSION CPL.",
+                            "partNumber": "48601934S"
+                        },
+                    {
+                            "id": 31,
+                            "namePart": "Nakrętka komplet",
+                            "partNumber": "48601553S"
+                        },
+                    {
+                            "id": 32,
+                            "namePart": "Uszczelka O-ring 11X2,5 NBR 70 SH PTFE",
+                            "partNumber": "04500003"
+                        },
+                    {
+                            "id": 33,
+                            "namePart": "Podkładka 27,5X33X0,3",
+                            "partNumber": "48601702"
+                        },
+                    {
+                            "id": 34,
+                            "namePart": "Śruba kołnierzowa M8X25 TX40",
+                            "partNumber": "0025080256"
+                        },
+                    {
+                            "id": 35,
+                            "namePart": "SCREW CAP M29,3X1",
+                            "partNumber": "48601980S"
+                        },
+                    {
+                            "id": 36,
+                            "namePart": "FORK PROTECTION RING 60,1MM",
+                            "partNumber": "48601948"
+                        },
+                    {
+                            "id": 37,
+                            "namePart": "STROKE INDICATOR 48MM RED",
+                            "partNumber": "48602007"
+                        },
+                    {
+                            "id": 38,
+                            "namePart": "STICKER SET XPLOR OC 238X182.5",
+                            "partNumber": "52000238SET"
+                        },
+                    {
+                            "id": 98,
+                            "namePart": "Smar FUCHS IPR (250G)",
+                            "partNumber": "T14034"
+                        },
+                    {
+                            "id": 99,
+                            "namePart": "Olej do przednich amortyzatorów SAE 4 5L",
+                            "partNumber": "48601166S1"
+                        }
+            ]
             },
             {
                 "id": 2,
-                "nameTypePart": "1TYL AMORTYZATORY SPIS CZĘŚCI",
-                "imageUrl": "assets/images/01.gif",
+                "nameTypePart": "PRZÓD AMORTYZATORY, PÓŁKI ZAWIESZENIA",
+                "imageUrl": "assets/images/02.gif",
                 "parts": [
-    
                     {
-                        "id": 1,
-                        "namePart": "test3",
-                        "partNumber": "14dsadsa"
-                    },
+                                    "id": 1,
+                                    "namePart": "AXLECLAMP OC RIGHT CPL. WITH TUBE",
+                                    "partNumber": "48601933S1"
+                            },
                     {
-                        "id": 2,
-                        "namePart": "test2 ",
-                        "partNumber": "14187dasdsaP6301"
-                    },
+                                    "id": 2,
+                                    "namePart": "AXLECLAMP OC LEFT CPL. WITH TUBE",
+                                    "partNumber": "48601932S1"
+                            },
                     {
-                        "id": 3,
-                        "namePart": "test3 ",
-                        "partNumber": "141das87P6301"
-                    },
+                                    "id": 3,
+                                    "namePart": "fork outer tube 49.13x577 dt54 db60",
+                                    "partNumber": "48602096"
+                            },
                     {
-                        "id": 4,
-                        "namePart": "test4 ",
-                        "partNumber": "141das87P6301"
-                    },                    {
-                        "id": 5,
-                        "namePart": "test5 ",
-                        "partNumber": "141dsa87P6301"
-                    },                    {
-                        "id": 6,
-                        "namePart": "test6 ",
-                        "partNumber": "141das87P6301"
-                    }
+                                    "id": 3,
+                                    "namePart": "fork outer tube 49.13x577 dt54 db60",
+                                    "partNumber": "48601671 => 48602096"
+                            },
+                    {
+                                    "id": 4,
+                                    "namePart": "SPRING 5,2N/MM SET",
+                                    "partNumber": "91410106S"
+                            },
+                    {
+                                    "id": 4,
+                                    "namePart": "Sprężyna 5,0N/MM SET D=4,9MM",
+                                    "partNumber": "91410105S"
+                            },
+                    {
+                                    "id": 4,
+                                    "namePart": "Sprężyna 4,8N/MM SET D=4,9MM",
+                                    "partNumber": "91410104S"
+                            },
+                    {
+                                    "id": 4,
+                                    "namePart": "Sprężyna amortyzatora L= 470 4,6 N/MM SET",
+                                    "partNumber": "91410103S"
+                            },
+                    {
+                                    "id": 4,
+                                    "namePart": "Sprężyna 4,4N/MM SET D=4,9MM",
+                                    "partNumber": "91410102S"
+                            },
+                    {
+                                    "id": 4,
+                                    "namePart": "Sprężyna 4,2N/MM SET D=4,9MM",
+                                    "partNumber": "91410101S"
+                            },
+                    {
+                                    "id": 4,
+                                    "namePart": "Sprężyna 4,0N/MM SET D=4,9MM",
+                                    "partNumber": "91410100S"
+                            },
+                    {
+                                    "id": 4,
+                                    "namePart": "Sprężyna 3,8N/MM SET D=4,9MM",
+                                    "partNumber": "91410099S"
+                            },
+                    {
+                                    "id": 4,
+                                    "namePart": "Spring (43,8) 3,6-470",
+                                    "partNumber": "91410098S"
+                            },
+                    {
+                                    "id": 5,
+                                    "namePart": "Przekładka 43X35X2,5",
+                                    "partNumber": "48600456"
+                            },
+                    {
+                                    "id": 5,
+                                    "namePart": "Przekładka 43X35X5",
+                                    "partNumber": "48600457"
+                            },
+                    {
+                                    "id": 5,
+                                    "namePart": "Przekładka 43X35X1,5",
+                                    "partNumber": "48600458"
+                            },
+                    {
+                                    "id": 6,
+                                    "namePart": "Screw cap M51x1,5 rebound cpl.",
+                                    "partNumber": "48601960S"
+                            },
+                    {
+                                    "id": 7,
+                                    "namePart": "Screw cap M51x1,5 compression ",
+                                    "partNumber": "48601961S"
+                            },
+                    {
+                                    "id": 8,
+                                    "namePart": "ADJUSTER KIT SCREW CAP",
+                                    "partNumber": "RP10021 => RP10021T"
+                            },
+                    {
+                                    "id": 8,
+                                    "namePart": "ADJUSTER KIT SCREW CAP",
+                                    "partNumber": "RP10021T"
+                            },
+                    {
+                                    "id": 9,
+                                    "namePart": "Uszczelniacz nakrętki amortyzatora / O-ring NBR 46 X 2",
+                                    "partNumber": "48600048"
+                            },
+                    {
+                                    "id": 10,
+                                    "namePart": "SEAL KIT 48MM SKF BLACK",
+                                    "partNumber": "RP10048T"
+                            },
+                    {
+                                    "id": 10,
+                                    "namePart": "SEAL KIT 48MM SKF BLACK",
+                                    "partNumber": "RP10012 => RP10048T"
+                            },
+                    {
+                                    "id": 11,
+                                    "namePart": "GUIDE BUSHING SET FORK 48MM",
+                                    "partNumber": "R14047 => R14047T"
+                            },
+                    {
+                                    "id": 11,
+                                    "namePart": "GUIDE BUSHING SET FORK 48MM",
+                                    "partNumber": "R14047T"
+                            },
+                    {
+                                    "id": 12,
+                                    "namePart": "TUBE, INCLUDING SCREW SLEEVE WITH HOLE",
+                                    "partNumber": "48600763S5"
+                            },
+                    {
+                                    "id": 13,
+                                    "namePart": "TUBE WITH SCREWSLEEVE",
+                                    "partNumber": "48600763S6"
+                            },
+                    {
+                                    "id": 14,
+                                    "namePart": "DU tuleja FOR tłoczek",
+                                    "partNumber": "48600430"
+                            },
+                    {
+                                    "id": 15,
+                                    "namePart": "TAP COMPRESSION CPL.",
+                                    "partNumber": "48601843S3"
+                            },
+                    {
+                                    "id": 16,
+                                    "namePart": "Nakrętka M6X0,5 REBOUND",
+                                    "partNumber": "40540486"
+                            },
+                    {
+                                    "id": 17,
+                                    "namePart": "MIDVALVE PISTON ASSEMBLY D23",
+                                    "partNumber": "48602002S"
+                            },
+                    {
+                                    "id": 18,
+                                    "namePart": "Zawór Sprężyna C=0,4",
+                                    "partNumber": "48600382"
+                            },
+                    {
+                                    "id": 19,
+                                    "namePart": "Tłoczek odbicia",
+                                    "partNumber": "48600576"
+                            },
+                    {
+                                    "id": 20,
+                                    "namePart": "Uszczelka O-ring 6X1,2 NBR",
+                                    "partNumber": "48600299"
+                            },
+                    {
+                                    "id": 21,
+                                    "namePart": "Odbojnik i prowadnica sprężyny",
+                                    "partNumber": "48600578S"
+                            },
+                    {
+                                    "id": 22,
+                                    "namePart": "Wspornik sprężyny",
+                                    "partNumber": "48601298"
+                            },
+                    {
+                                    "id": 23,
+                                    "namePart": "Iglica regulacyjna komplet",
+                                    "partNumber": "48600277S"
+                            },
+                    {
+                                    "id": 24,
+                                    "namePart": "Iglica regulacji kompresji komplet",
+                                    "partNumber": "48601558S"
+                            },
+                    {
+                                    "id": 25,
+                                    "namePart": "Tłoczek D=12 L=554 ALU",
+                                    "partNumber": "48600568"
+                            },
+                    {
+                                    "id": 26,
+                                    "namePart": "Adjustment tube 6x524,6",
+                                    "partNumber": "48602036"
+                            },
+                    {
+                                    "id": 27,
+                                    "namePart": "Odbojnik hydrauliczny L200",
+                                    "partNumber": "48601556S"
+                            },
+                    {
+                                    "id": 28,
+                                    "namePart": "Nakrętka M6X0,5 D=2",
+                                    "partNumber": "48600163"
+                            },
+                    {
+                                    "id": 29,
+                                    "namePart": "Sprężyna zaworu zwrotnego D=0,7",
+                                    "partNumber": "48600202"
+                            },
+                    {
+                                    "id": 30,
+                                    "namePart": "PISTON 6X27,3X9 COMPRESSION CPL.",
+                                    "partNumber": "48601934S"
+                            },
+                    {
+                                    "id": 31,
+                                    "namePart": "Nakrętka komplet",
+                                    "partNumber": "48601553S"
+                            },
+                    {
+                                    "id": 32,
+                                    "namePart": "Uszczelka O-ring 11X2,5 NBR 70 SH PTFE",
+                                    "partNumber": "04500003"
+                            },
+                    {
+                                    "id": 33,
+                                    "namePart": "Podkładka 27,5X33X0,3",
+                                    "partNumber": "48601702"
+                            },
+                    {
+                                    "id": 34,
+                                    "namePart": "Śruba kołnierzowa M8X25 TX40",
+                                    "partNumber": "0025080256"
+                            },
+                    {
+                                    "id": 35,
+                                    "namePart": "SCREW CAP M29,3X1",
+                                    "partNumber": "48601980S"
+                            },
+                    {
+                                    "id": 36,
+                                    "namePart": "FORK PROTECTION RING 60,1MM",
+                                    "partNumber": "48601948"
+                            },
+                    {
+                                    "id": 37,
+                                    "namePart": "STROKE INDICATOR 48MM RED",
+                                    "partNumber": "48602007"
+                            },
+                    {
+                                    "id": 38,
+                                    "namePart": "STICKER SET XPLOR OC 238X182.5",
+                                    "partNumber": "52000238SET"
+                            },
+                    {
+                                    "id": 98,
+                                    "namePart": "Smar FUCHS IPR (250G)",
+                                    "partNumber": "T14034"
+                            },
+                    {
+                                    "id": 99,
+                                    "namePart": "Olej do przednich amortyzatorów SAE 4 5L",
+                                    "partNumber": "48601166S1"
+                            }
                 ]
+            },
+            {
+                "id": 3,
+                "nameTypePart": "KIEROWNICA I OSPRZĘT",
+                "imageUrl": "assets/images/03.gif",
+                "parts": [
+                    {
+                                    "id": 1,
+                                    "namePart": "Kierownica",
+                                    "partNumber": "7800200100030"
+                            },
+                    {
+                                    "id": 2,
+                                    "namePart": "Gąbka na kierownicę",
+                                    "partNumber": "77202002144"
+                            },
+                    {
+                                    "id": 3,
+                                    "namePart": "OSŁONY DŁONI - LISTKI (czarne)",
+                                    "partNumber": "7960218204430"
+                            },
+                    {
+                                    "id": 4,
+                                    "namePart": "Zestaw gripów",
+                                    "partNumber": "79002021100 => 79002021200"
+                            },
+                    {
+                                    "id": 4,
+                                    "namePart": "Zestaw gripów",
+                                    "partNumber": "79002021200"
+                            },
+                    {
+                                    "id": 5,
+                                    "namePart": "Przełącznik świateł",
+                                    "partNumber": "78111070000"
+                            },
+                    {
+                                    "id": 6,
+                                    "namePart": "Śruba M 5X16 WS=6",
+                                    "partNumber": "0014050163"
+                            },
+                    {
+                                    "id": 7,
+                                    "namePart": "Obudowa przepustnicy komplet",
+                                    "partNumber": "79002010125"
+                            },
+                    {
+                                    "id": 8,
+                                    "namePart": "Zaczep przewodu",
+                                    "partNumber": "83013026000"
+                            },
+                    {
+                                    "id": 9,
+                                    "namePart": "Śruba M5X30 SW=6",
+                                    "partNumber": "0014050303"
+                            },
+                    {
+                                    "id": 10,
+                                    "namePart": "THROTTLE CABLE CMPL. 2T DI",
+                                    "partNumber": "55702091000 => 55702191000"
+                            },
+                    {
+                                    "id": 10,
+                                    "namePart": "THROTTLE CABLE CMPL. 2T DI",
+                                    "partNumber": "55702191000"
+                            },
+                    {
+                                    "id": 11,
+                                    "namePart": "Opaska do zaciskania kabli 200/3,6MM (czarna)",
+                                    "partNumber": "44011076200"
+                            },
+                    {
+                                    "id": 12,
+                                    "namePart": "Pompa hamulcowa komplet",
+                                    "partNumber": "79202030044"
+                            },
+                    {
+                                    "id": 13,
+                                    "namePart": "Zestaw montażowy handbarów",
+                                    "partNumber": "79602084044"
+                            },
+                    {
+                                    "id": 14,
+                                    "namePart": "Guzik startujący / rozruchowy (szary)",
+                                    "partNumber": "78111074000"
+                            },
+                    {
+                                    "id": 15,
+                                    "namePart": "Wyłącznik silnika CEV",
+                                    "partNumber": "50311074000"
+                            },
+                    {
+                                    "id": 16,
+                                    "namePart": "Zawór",
+                                    "partNumber": "54802051000"
+                            },
+                    {
+                                    "id": 17,
+                                    "namePart": "Klamra wyłącznika silnika",
+                                    "partNumber": "50311074050"
+                            },
+                    {
+                                    "id": 19,
+                                    "namePart": "Śruba AH DIN 912-M 4X20",
+                                    "partNumber": "0912040203"
+                            },
+                    {
+                                    "id": 29,
+                                    "namePart": "Przełącznik kierunkowskazów",
+                                    "partNumber": "78111029000"
+                            },
+                    {
+                                    "id": 31,
+                                    "namePart": "Dźwignia sprzęgła komplet BREMBO 06",
+                                    "partNumber": "54802031000"
+                            },
+                    {
+                                    "id": 32,
+                                    "namePart": "Zestaw naprawczy tłoczka 9MM",
+                                    "partNumber": "79202032044"
+                            },
+                    {
+                                    "id": 33,
+                                    "namePart": "Pokrywa pompy sprzęgła hydraulicznego komplet 2014",
+                                    "partNumber": "5480200310030"
+                            },
+                    {
+                                    "id": 37,
+                                    "namePart": "Nakładka ochronna 06",
+                                    "partNumber": "54802037000"
+                            },
+                    {
+                                    "id": 38,
+                                    "namePart": "Śruba dźwigni komplet 06",
+                                    "partNumber": "54802038100"
+                            },
+                    {
+                                    "id": 39,
+                                    "namePart": "Zacisk komplet 06",
+                                    "partNumber": "54802005100"
+                            },
+                    {
+                                    "id": 40,
+                                    "namePart": "Popychacz komplet",
+                                    "partNumber": "54802046000"
+                            },
+                    {
+                                    "id": 41,
+                                    "namePart": "Zestaw śrub",
+                                    "partNumber": "54802052000"
+                            },
+                    {
+                                    "id": 42,
+                                    "namePart": "Lusterko wsteczne lewe",
+                                    "partNumber": "58012040000"
+                            },
+                    {
+                                    "id": 42,
+                                    "namePart": "Lusterko wsteczne prawe",
+                                    "partNumber": "58012140000"
+                            },
+                    {
+                                    "id": 44,
+                                    "namePart": "Wspornik lusterka LC4 '98",
+                                    "partNumber": "58412040050"
+                            },
+                    {
+                                    "id": 45,
+                                    "namePart": "Lusterko prawe 98",
+                                    "partNumber": "58412041000"
+                            },
+                    {
+                                    "id": 45,
+                                    "namePart": "Lusterko lewe 98",
+                                    "partNumber": "58412040000"
+                            },
+                    {
+                                    "id": 46,
+                                    "namePart": "Obejma lusterka '94",
+                                    "partNumber": "58012040150"
+                            },
+                    {
+                                    "id": 63,
+                                    "namePart": "Przewód sprzęgła",
+                                    "partNumber": "79232063000"
+                            },
+                    {
+                                    "id": 99,
+                                    "namePart": "Płyn hamulcowy DOT5.1, 0,25L",
+                                    "partNumber": "00062030000"
+                            }
+                        ]
+            },
+            {
+                "id": 4,
+                "nameTypePart": "RAMA",
+                "imageUrl": "assets/images/04.gif",
+                "parts": [
+                    {
+                                    "id": 1,
+                                    "namePart": "FRAME 517T1",
+                                    "partNumber": "5170310110033"
+                            },
+                    {
+                                    "id": 2,
+                                    "namePart": "SUBFRAME",
+                                    "partNumber": "79103002100"
+                            },
+                    {
+                                    "id": 3,
+                                    "namePart": "Śruba z łbem stożkowym ISA45 M8X20",
+                                    "partNumber": "0019080206S"
+                            },
+                    {
+                                    "id": 5,
+                                    "namePart": "Guma zbiornika paliwa",
+                                    "partNumber": "79607012000"
+                            },
+                    {
+                                    "id": 6,
+                                    "namePart": "NAKRĘTKA SZEŚCIOKĄTNA DIN0934-M 8",
+                                    "partNumber": "0934080003"
+                            },
+                    {
+                                    "id": 7,
+                                    "namePart": "Tylna rama pomocnicza BIT",
+                                    "partNumber": "79103002010"
+                            },
+                    {
+                                    "id": 8,
+                                    "namePart": "Śruba uchwytu silnika. M10X115",
+                                    "partNumber": "77203014000"
+                            },
+                    {
+                                    "id": 9,
+                                    "namePart": "AH-COLLAR SCREW M8X15 TORX45",
+                                    "partNumber": "0035080156S"
+                            },
+                    {
+                                    "id": 10,
+                                    "namePart": "Uchwyt przewodu / odpowietrzenie",
+                                    "partNumber": "79107013010"
+                            },
+                    {
+                                    "id": 11,
+                                    "namePart": "Śruba specjalna M8X26 WS=10",
+                                    "partNumber": "59001037000"
+                            },
+                    {
+                                    "id": 12,
+                                    "namePart": "Wałek zbiornika paliwa 12X26X12'98",
+                                    "partNumber": "50307014000"
+                            },
+                    {
+                                    "id": 13,
+                                    "namePart": "Śruba kołnierzowa M6X13 ISA30",
+                                    "partNumber": "0026060136"
+                            },
+                    {
+                                    "id": 14,
+                                    "namePart": "ENGINE BRACE LEFT",
+                                    "partNumber": "5170311300001S"
+                            },
+                    {
+                                    "id": 15,
+                                    "namePart": "ENGINE BRACE RIGHT",
+                                    "partNumber": "5170311400001S"
+                            },
+                    {
+                                    "id": 16,
+                                    "namePart": "Śruba specjalna M8X18 TORX45 SS",
+                                    "partNumber": "79003003000"
+                            },
+                    {
+                                    "id": 17,
+                                    "namePart": "KABELBAND 140/3,5 MM SCHWARZ",
+                                    "partNumber": "44011176140"
+                            },
+                    {
+                                    "id": 17,
+                                    "namePart": "Opaska do zaciskania kabli 300/4,8MM (czarna)",
+                                    "partNumber": "44011076305"
+                            },
+                    {
+                                    "id": 18,
+                                    "namePart": "Śruba M 5X12 WS=6",
+                                    "partNumber": "0014050123"
+                            },
+                    {
+                                    "id": 19,
+                                    "namePart": "Tulejka do osłony ramy 03",
+                                    "partNumber": "54803092060"
+                            },
+                    {
+                                    "id": 20,
+                                    "namePart": "CABLE HOLDER THROTTLE CABLE GUIDE",
+                                    "partNumber": "79711013000"
+                            },
+                    {
+                                    "id": 21,
+                                    "namePart": "CABLE BRACKET D8",
+                                    "partNumber": "79711013010"
+                            },
+                    {
+                                    "id": 21,
+                                    "namePart": "CABLE BRACKET D8",
+                                    "partNumber": "61111041000 => 79711013010"
+                            },
+                    {
+                                    "id": 22,
+                                    "namePart": "Śruba kołnierzowa M8X30 TX40",
+                                    "partNumber": "0025080306"
+                            },
+                    {
+                                    "id": 23,
+                                    "namePart": "Śruba kołnierzowa M6X40 TX30",
+                                    "partNumber": "0025060406"
+                            },
+                    {
+                                    "id": 24,
+                                    "namePart": "Podkładka DIN0125-A 6,4",
+                                    "partNumber": "0125060003"
+                            },
+                    {
+                                    "id": 25,
+                                    "namePart": "CABLE HOLDER",
+                                    "partNumber": "79111014010"
+                            },
+                    {
+                                    "id": 26,
+                                    "namePart": "Nakrętka samokontrująca M10 CU WS=14",
+                                    "partNumber": "54310086100"
+                            },
+                    {
+                                    "id": 27,
+                                    "namePart": "Śruba do plastiku K50X18 T20",
+                                    "partNumber": "0081050181"
+                            },
+                    {
+                                    "id": 29,
+                                    "namePart": "Śruba kołnierzowa M8X20 ISA45",
+                                    "partNumber": "0035080206S"
+                            },
+                    {
+                                    "id": 36,
+                                    "namePart": "Podnóżek lewy EXC 2017",
+                                    "partNumber": "79603040000"
+                            },
+                    {
+                                    "id": 39,
+                                    "namePart": "Sprężyna podnóżka lewa 2016",
+                                    "partNumber": "79003045000"
+                            },
+                    {
+                                    "id": 40,
+                                    "namePart": "Podnóżek prawy EXC 2017",
+                                    "partNumber": "79603041000"
+                            },
+                    {
+                                    "id": 41,
+                                    "namePart": "Śruba do podnóżka 51.5X9.8 MM",
+                                    "partNumber": "54803044000"
+                            },
+                    {
+                                    "id": 42,
+                                    "namePart": "Sprężyna podnóżka prawa 2016",
+                                    "partNumber": "79003044000"
+                            },
+                    {
+                                    "id": 43,
+                                    "namePart": "Podkładka DIN0125-A10,5",
+                                    "partNumber": "0125100003"
+                            },
+                    {
+                                    "id": 44,
+                                    "namePart": "Swożeń DIN0094-3,2X25 stal.",
+                                    "partNumber": "0094032253"
+                            },
+                    {
+                                    "id": 45,
+                                    "namePart": "Zestaw podnóżków",
+                                    "partNumber": "79603040033"
+                            },
+                    {
+                                    "id": 47,
+                                    "namePart": "Wąż PVC 7X10 na metry",
+                                    "partNumber": "55007016001"
+                            },
+                    {
+                                    "id": 95,
+                                    "namePart": "Zestaw osłon ramy",
+                                    "partNumber": "7910309400030 => 7910309410030"
+                            },
+                    {
+                                    "id": 95,
+                                    "namePart": "Zestaw osłon ramy",
+                                    "partNumber": "7910309410030"
+                            },
+                    {
+                                    "id": 97,
+                                    "namePart": "Ślizg łańcucha (dolny) komplet 16",
+                                    "partNumber": "79003053010"
+                            },
+                    {
+                                    "id": 99,
+                                    "namePart": "Osłona zębatki zestaw",
+                                    "partNumber": "50403096010"
+                            }
+    ]
+
             }
+            
         ]
     },
     {
@@ -151,3 +1068,5 @@
         ]
     }
 ]
+
+

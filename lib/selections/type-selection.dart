@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:motor_scheme/colors/colors.dart';
 import 'parts-selection.dart';
 
@@ -20,159 +23,191 @@ class ScreenArguments {
 }
 
 class _SelectionState extends State<TypeSelection> {
-  List<String> years = [
-    '1994',
-    '1995',
-    '1996',
-    '1997',
-    '1998',
-    '1999',
-    '2000',
-    '2001',
-    '2002',
-    '2003',
-    '2004',
-    '2005',
-    '2006',
-    '2007',
-    '2008',
-    '2009',
-    '2010',
-    '2011',
-    '2012',
-    '2013',
-    '2014',
-    '2015',
-    '2016',
-    '2017',
-    '2018',
-    '2019',
-    '2020',
-    '2021',
-    '2022',
-    '2023',
-  ];
-  List<String> categorys = [
-    'Enduro',
-    'Cross',
-    'Mini',
-    'Adventure',
-    'Naked',
-  ];
-  List<String> models = [
-    '300 EXC',
-    '250 EXC',
-    '125 EXC',
-    '350 EXCF',
-    '450 EXCF',
-  ];
+  String? selectecdModel;
+  String? selectecdCategory;
+  String? selectecdYear;
+  dynamic parsedJson;
+  List<dynamic> modelsList = [];
+  List<dynamic> typesList = [];
+  List<dynamic> yearsList = [];
 
-  String? selectecdModel = '300 EXC';
-  String? selectecdCategory = 'Enduro';
-  String? selectecdYear = '2023';
+  @override
+  void initState() {
+    super.initState();
+    _loadData();
+  }
+
+  Future<dynamic> _loadData() async {
+    String xmlString = await rootBundle.loadString('data/brand-data.json');
+    dynamic parsedJson = json.decode(xmlString);
+    return parsedJson;
+  }
+
+  findAllModelsForSelectedOptions(
+      selectecdYear, selectecdCategory, selectedBrand) async {
+    dynamic parsedJson = await _loadData();
+    for (var i = 0; i < parsedJson.length; i++) {
+      if (parsedJson[i]["marka"] == selectedBrand) {
+        var brandModel = parsedJson[i]["modele"].where((model) =>
+            model["year"].contains(selectecdYear) &&
+            model["typ"] == selectecdCategory);
+        modelsList = brandModel.map((model) => model["model"]).toList();
+        return modelsList;
+      }
+    }
+  }
+
+  findAllTypesForSelectedBrand(selectedBrand) async {
+    dynamic parsedJson = await _loadData();
+    for (var i = 0; i < parsedJson.length; i++) {
+      if (parsedJson[i]["marka"] == selectedBrand) {
+        typesList = parsedJson[i]["typ"].toList();
+        return typesList;
+      }
+    }
+  }
+
+  Future<List<dynamic>?> findAllYearsForSelectedBrand(selectedBrand) async {
+    dynamic parsedJson = await _loadData();
+    for (var i = 0; i < parsedJson.length; i++) {
+      if (parsedJson[i]["marka"] == selectedBrand) {
+        yearsList = parsedJson[i]["years"].toList();
+        return yearsList;
+      }
+    }
+    return null;
+  }
+
+  Color getBackgroundColor(String brand) {
+    if (brand == 'KTM') {
+      return AppColors.ktmColor;
+    } else if (brand == 'Suzuki') {
+      return AppColors.suzukiColor;
+    } else if (brand == 'Honda') {
+      return AppColors.hondaColor;
+    } else if (brand == 'Yamaha') {
+      return AppColors.yamahaColor;
+    } else if (brand == 'Kawasaki') {
+      return AppColors.kawasakiColor;
+    } else {
+      return Colors.grey;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     final selectedBrand = widget.selectedBrand;
-    return MaterialApp(
-        home: Scaffold(
-            appBar: AppBar(
-              leading: IconButton(
-                icon: const Icon(Icons.arrow_back),
-                onPressed: () => Navigator.of(context).pop(),
+    getBackgroundColor(selectedBrand);
+    findAllTypesForSelectedBrand(selectedBrand);
+    findAllYearsForSelectedBrand(selectedBrand);
+
+    return FutureBuilder<List<dynamic>?>(
+      future: findAllYearsForSelectedBrand(selectedBrand),
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          yearsList = snapshot.data!;
+          return Scaffold(
+              appBar: AppBar(
+                leading: IconButton(
+                  icon: const Icon(Icons.arrow_back),
+                  onPressed: () => Navigator.of(context).pop(),
+                ),
+                backgroundColor: getBackgroundColor(selectedBrand),
+                title: Text('WYBÓR MODELU'),
+                centerTitle: true,
               ),
-              backgroundColor: selectedBrand == 'KTM'
-                  ? AppColors.ktmColor
-                  : selectedBrand == 'Suzuki'
-                      ? AppColors.suzukiColor
-                      : selectedBrand == 'Honda'
-                          ? AppColors.hondaColor
-                          : selectedBrand == 'Yamaha'
-                              ? AppColors.yamahaColor
-                              : selectedBrand == 'Kawasaki'
-                                  ? AppColors.kawasakiColor
-                                  : Colors.grey,
-              title: Text('WYBÓR MODELU MARKI: $selectedBrand'),
-              centerTitle: true,
-            ),
-            body: ListView(
-              children: <Widget>[
-                Center(
-                  child: DropdownButtonFormField<String>(
-                      decoration: const InputDecoration(
-                          labelText: '01. WYBIERZ ROCZNIK:'),
-                      value: selectecdYear,
-                      items: years
-                          .map((year) => DropdownMenuItem<String>(
-                                value: year,
-                                child: Text(
-                                  year,
-                                  style: TextStyle(fontSize: 24),
-                                ),
-                              ))
-                          .toList(),
-                      onChanged: (item) => setState(
-                            () => selectecdYear = item,
-                          )),
-                ),
-                Center(
-                  child: DropdownButtonFormField<String>(
-                      decoration: const InputDecoration(
-                        labelText: '02. WYBIERZ TYP POJAZDU:',
-                      ),
-                      value: selectecdCategory,
-                      items: categorys
-                          .map((category) => DropdownMenuItem<String>(
-                                value: category,
-                                child: Text(
-                                  category,
-                                  style: const TextStyle(fontSize: 24),
-                                ),
-                              ))
-                          .toList(),
-                      onChanged: (category) => setState(
-                            () => selectecdCategory = category,
-                          )),
-                ),
-                Center(
+              body: ListView(
+                children: <Widget>[
+                  Center(
+                    child: DropdownButtonFormField<String>(
+                        decoration:
+                            const InputDecoration(labelText: '01. ROCZNIK:'),
+                        value: null,
+                        items: yearsList
+                            .map((year) => DropdownMenuItem<String>(
+                                  value: year,
+                                  child: Text(
+                                    year,
+                                    style: TextStyle(fontSize: 24),
+                                  ),
+                                ))
+                            .toList(),
+                        onChanged: (item) =>
+                            {setState(() => selectecdYear = item)}),
+                  ),
+                  Center(
                     child: DropdownButtonFormField<String>(
                         decoration: const InputDecoration(
-                          labelText: '03. WYBIERZ MODEL:',
+                          labelText: '02. TYP POJAZDU:',
                         ),
-                        value: selectecdModel,
-                        items: models
-                            .map((model) => DropdownMenuItem<String>(
-                                  value: model,
+                        value: null,
+                        items: typesList
+                            .map((typesList) => DropdownMenuItem<String>(
+                                  value: typesList,
+                                  enabled: selectecdYear != null,
                                   child: Text(
-                                    model,
+                                    typesList,
                                     style: const TextStyle(fontSize: 24),
                                   ),
                                 ))
                             .toList(),
-                        onChanged: (model) => setState(
-                              () => selectecdModel = model,
-                            ))),
-                IconButton(
-                  icon: const Icon(
-                    Icons.arrow_forward_ios,
-                    size: 70.0,
-                    color: Colors.orange,
+                        onChanged: (category) => setState(() {
+                              selectecdCategory = category;
+                              findAllModelsForSelectedOptions(selectecdYear,
+                                  selectecdCategory, selectedBrand);
+                            })),
                   ),
-                  onPressed: () {
-                    Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(
-                        settings: const RouteSettings(name: '/form'),
-                        builder: (context) => PartsSelection(
-                            selectedBrand: selectedBrand,
-                            selectecdYear: selectecdYear!,
-                            selectecdModel: selectecdModel!,
-                            selectecdCategory: selectecdCategory!),
-                      ),
-                    );
-                  },
-                ),
-              ],
-            )));
+                  Center(
+                      child: DropdownButtonFormField<String>(
+                    decoration: const InputDecoration(
+                      labelText: '03. MODEL: ',
+                    ),
+                    value: null,
+                    items: modelsList
+                        .map((model) => DropdownMenuItem<String>(
+                            value: model,
+                            enabled: selectecdYear != null,
+                            child: Text(
+                              model,
+                              style: const TextStyle(fontSize: 24),
+                            )))
+                        .toList(),
+                    onChanged: (model) => setState(
+                      () => selectecdModel = model!,
+                    ),
+                  )),
+                  IconButton(
+                      icon: Icon(Icons.arrow_forward_ios,
+                          size: 70.0,
+                          color: selectecdModel == null
+                              ? Colors.grey
+                              : getBackgroundColor(selectedBrand)),
+                      onPressed: (selectecdYear != null &&
+                              selectecdModel != null &&
+                              selectecdCategory != null)
+                          ? () {
+                              Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(
+                                  settings: const RouteSettings(name: '/form'),
+                                  builder: (context) => PartsSelection(
+                                      selectedBrand: selectedBrand,
+                                      selectecdYear: selectecdYear!,
+                                      selectecdModel: selectecdModel!,
+                                      selectecdCategory: selectecdCategory!,
+                                      colorBrand:
+                                          getBackgroundColor(selectedBrand)),
+                                ),
+                              );
+                            }
+                          : null),
+                ],
+              ));
+        } else if (snapshot.hasError) {
+          return Text("${snapshot.error}");
+        }
+        return CircularProgressIndicator();
+      },
+    );
   }
 
   decoration(String s) {}

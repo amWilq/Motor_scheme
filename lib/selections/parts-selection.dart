@@ -6,13 +6,15 @@ import '../models/partData.dart';
 import '../parts-view/parts-view.dart';
 
 class PartsSelection extends StatefulWidget {
+  final Color colorBrand;
   final String selectecdYear;
   final String selectecdModel;
   final String selectecdCategory;
   final String selectedBrand;
 
   const PartsSelection(
-      {required this.selectedBrand,
+      {required this.colorBrand,
+      required this.selectedBrand,
       required this.selectecdYear,
       required this.selectecdModel,
       required this.selectecdCategory});
@@ -68,6 +70,7 @@ class _PartsSelectionState extends State<PartsSelection> {
     final selectecdYear = widget.selectecdYear;
     final selectecdModel = widget.selectecdModel;
     final selectedBrand = widget.selectedBrand;
+    final colorBrand = widget.colorBrand;
     List<PartData> partData = [];
     for (var i = 0; i < allData.length; i++) {
       List parts = allData[i]['parts'];
@@ -89,7 +92,7 @@ class _PartsSelectionState extends State<PartsSelection> {
             title: Text(
                 'Wybór części dla:\n$selectedBrand $selectecdModel $selectecdYear'),
             centerTitle: true,
-            backgroundColor: AppColors.ktmColor,
+            backgroundColor: colorBrand,
           ),
         ],
         body: partData.isEmpty
@@ -110,7 +113,8 @@ class _PartsSelectionState extends State<PartsSelection> {
                       Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) => PartsView(
                             parts: partData[index].parts,
-                            partsImageUrl: partsImageUrl),
+                            partsImageUrl: partsImageUrl,
+                            colorBrand: colorBrand),
                       ));
                     },
                   ),

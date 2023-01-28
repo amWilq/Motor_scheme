@@ -3,10 +3,14 @@ import 'package:flutter/material.dart';
 import '../colors/colors.dart';
 
 class PartsView extends StatefulWidget {
+  final Color colorBrand;
   final List parts;
   final String partsImageUrl;
 
-  PartsView({required this.parts, required this.partsImageUrl});
+  PartsView(
+      {required this.colorBrand,
+      required this.parts,
+      required this.partsImageUrl});
 
   @override
   State<PartsView> createState() => _PartsViewState();
@@ -17,13 +21,14 @@ class _PartsViewState extends State<PartsView> {
   Widget build(BuildContext context) {
     final parts = widget.parts;
     final partsImageUrl = widget.partsImageUrl;
+    final colorBrand = widget.colorBrand;
 
     return Scaffold(
         body: NestedScrollView(
       floatHeaderSlivers: true,
       headerSliverBuilder: (context, innerBoxIsScrolled) => [
         SliverAppBar(
-          backgroundColor: AppColors.ktmColor,
+          backgroundColor: colorBrand,
           floating: true,
           title: const Text("WYBÓR SCHEMATU"),
           centerTitle: true,
@@ -52,7 +57,7 @@ class _PartsViewState extends State<PartsView> {
                 )),
                 for (var i = 0; i < parts.length; i++)
                   ListTile(
-                    leading: Text((i + 1).toString()),
+                    leading: Text(parts[i]['id'].toString()),
                     title: Text(parts[i]['namePart']),
                     subtitle: Text(parts[i]['partNumber']),
                   ),
