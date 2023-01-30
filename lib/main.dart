@@ -25,6 +25,12 @@ class _MyAppState extends State<MyApp> {
     const FavouritePage(),
   ];
 
+  void _navigateToFeed() {
+    setState(() {
+      currentIndex = 1;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
