@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../read-data/data-brand-model.dart';
+import '../models/brandData.dart';
 import 'type-selection.dart';
 
 class BrandSelection extends StatefulWidget {
@@ -28,7 +28,7 @@ class _BrandSelectionState extends State<BrandSelection> {
       home: Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          backgroundColor: Colors.blue,
+          backgroundColor: Colors.grey,
           title: const Text('WYBIERZ TWOJA MARKĘ!'),
         ),
         body: ListView.builder(
@@ -44,7 +44,12 @@ class _BrandSelectionState extends State<BrandSelection> {
                   ),
                   onTap: () {
                     Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => const Selection()));
+                      builder: (context) =>
+                          TypeSelection(selectedBrand: brandData[index].name),
+                      settings: RouteSettings(
+                        arguments: brandData,
+                      ),
+                    ));
                   },
                 ),
               );
