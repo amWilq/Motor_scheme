@@ -2,7 +2,10 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:motor_scheme/colors/colors.dart';
+import '../cubits/fav_cubit.dart';
+import '../models/vehicle_model.dart';
 import 'parts-selection.dart';
 
 class TypeSelection extends StatefulWidget {
@@ -138,7 +141,7 @@ class _SelectionState extends State<TypeSelection> {
                   Center(
                     child: DropdownButtonFormField<String>(
                         decoration: const InputDecoration(
-                          labelText: '02. TYP POJAZDU:',
+                          labelText: '02. RODZAJ:',
                         ),
                         value: null,
                         items: typesList
@@ -176,7 +179,9 @@ class _SelectionState extends State<TypeSelection> {
                       () => selectecdModel = model!,
                     ),
                   )),
-                  IconButton(
+                  Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                    IconButton(
+                      padding: EdgeInsets.zero,
                       icon: Icon(Icons.arrow_forward_ios,
                           size: 70.0,
                           color: selectecdModel == null
@@ -188,7 +193,6 @@ class _SelectionState extends State<TypeSelection> {
                           ? () {
                               Navigator.of(context).pushReplacement(
                                 MaterialPageRoute(
-                                  settings: const RouteSettings(name: '/form'),
                                   builder: (context) => PartsSelection(
                                       selectedBrand: selectedBrand,
                                       selectecdYear: selectecdYear!,
@@ -199,7 +203,50 @@ class _SelectionState extends State<TypeSelection> {
                                 ),
                               );
                             }
-                          : null),
+                          : null,
+                    ),
+                    SizedBox(
+                      height: 24,
+                    ),
+                    IconButton(
+                      padding: EdgeInsets.zero,
+                      icon: Icon(
+                        Icons.favorite,
+                        size: 70.0,
+                        color: selectecdModel == null
+                            ? Colors.grey
+                            : getBackgroundColor(selectedBrand),
+                      ),
+                      onPressed: (selectecdYear != null &&
+                              selectecdModel != null &&
+                              selectecdCategory != null)
+                          ? () {
+                              context
+                                  .read<FavCubit>()
+                                  .addFavorites(VehicleModel(
+                                    brand: selectedBrand,
+                                    type: selectecdCategory!,
+                                    year: selectecdYear!,
+                                    model: selectecdModel!,
+                                  ));
+                              showDialog(
+                                context: context,
+                                builder: (context) => AlertDialog(
+                                  title: const Text('Ulubiony!'),
+                                  content: const Text(
+                                      'Twój model został dodany do ulubionych!'),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () => Navigator.pop(context),
+                                      child: Text('OK'),
+                                    ),
+                                  ],
+                                ),
+                              );
+                            }
+                          : null,
+                    ),
+                  ])
                 ],
               ));
         } else if (snapshot.hasError) {

@@ -78,11 +78,11 @@ class _PartsSelectionState extends State<PartsSelection> {
         id: allData[i]['id'],
         nameTypePart: allData[i]['nameTypePart'],
         imageUrl: allData[i]['imageUrl'],
+        partsImageUrl: allData[i]['partsImageUrl'],
         parts: parts,
       );
       partData.add(part);
     }
-
     return Scaffold(
       body: NestedScrollView(
         floatHeaderSlivers: true,
@@ -113,7 +113,7 @@ class _PartsSelectionState extends State<PartsSelection> {
                       Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) => PartsView(
                             parts: partData[index].parts,
-                            partsImageUrl: partsImageUrl,
+                            partsImageUrl: partData[index].partsImageUrl,
                             colorBrand: colorBrand),
                       ));
                     },

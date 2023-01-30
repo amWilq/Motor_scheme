@@ -22,7 +22,6 @@ class _PartsViewState extends State<PartsView> {
     final parts = widget.parts;
     final partsImageUrl = widget.partsImageUrl;
     final colorBrand = widget.colorBrand;
-
     return Scaffold(
         body: NestedScrollView(
       floatHeaderSlivers: true,
@@ -44,12 +43,12 @@ class _PartsViewState extends State<PartsView> {
                 Center(
                     child: GestureDetector(
                   onTap: () {
-                    showImageViewer(context, Image.asset(partsImageUrl).image,
+                    showImageViewer(context, Image.network(partsImageUrl).image,
                         swipeDismissible: false);
                   },
                   child: Container(
                     height: 150,
-                    child: Image.asset(
+                    child: Image.network(
                       partsImageUrl,
                       fit: BoxFit.cover,
                     ),

@@ -51,6 +51,7 @@ dependencies:
   timeago: 3.2.2
   url_launcher: 6.1.5
   easy_image_viewer: ^1.1.0
+  flutter_bloc: ^8.1.1
 
 dev_dependencies:
   flutter_test:
@@ -78,6 +79,7 @@ flutter:
     - assets/images/
     - data/data.json
     - data/brand-data.json
+    - assets/ktm/
 
    
 
