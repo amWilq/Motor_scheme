@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:motor_scheme/colors/colors.dart';
 import '../models/partData.dart';
 import '../parts-view/parts-view.dart';
+import 'package:http/http.dart' as http;
 
 class PartsSelection extends StatefulWidget {
   final Color colorBrand;
@@ -30,6 +31,7 @@ class _PartsSelectionState extends State<PartsSelection> {
     _loadData();
   }
 
+  bool _isLoading = true;
   List allData = [];
   String partsImageUrl = "";
   void _loadData() async {
@@ -39,30 +41,42 @@ class _PartsSelectionState extends State<PartsSelection> {
     final selectedBrand = widget.selectedBrand;
 
     List<String> nameTypeParts = [];
-    String xmlString = await rootBundle.loadString('data/data.json');
-    dynamic parsedJson = json.decode(xmlString);
-    List newAllData = [];
-    String newPartsImageUrl = "";
 
-    for (var i = 0; i < parsedJson.length; i++) {
-      if (parsedJson[i]['mark'] == selectedBrand &&
-          parsedJson[i]['category'] == selectecdCategory &&
-          parsedJson[i]['model'] == selectecdModel &&
-          parsedJson[i]['year'] == selectecdYear) {
-        newAllData = parsedJson[i]["part"];
-        if (parsedJson[i]["partsImageUrl"] != null) {
-          newPartsImageUrl = parsedJson[i]["partsImageUrl"];
-        }
-        for (var element in newAllData) {
-          nameTypeParts.add(element["nameTypePart"]);
-        }
-      } else {}
+    String url =
+        "https://raw.githubusercontent.com/amWilq/Motor_scheme/master/data/data.json";
+    Uri uri = Uri.parse(url);
+    http.Response response = await http.get(uri);
+    if (response.statusCode == 200) {
+      String data = response.body;
+      dynamic parsedJson = json.decode(data);
+      print(parsedJson);
+
+      List newAllData = [];
+      String newPartsImageUrl = "";
+
+      for (var i = 0; i < parsedJson.length; i++) {
+        if (parsedJson[i]['mark'] == selectedBrand &&
+            parsedJson[i]['category'] == selectecdCategory &&
+            parsedJson[i]['model'] == selectecdModel &&
+            parsedJson[i]['year'] == selectecdYear) {
+          newAllData = parsedJson[i]["part"];
+          if (parsedJson[i]["partsImageUrl"] != null) {
+            newPartsImageUrl = parsedJson[i]["partsImageUrl"];
+          }
+          for (var element in newAllData) {
+            nameTypeParts.add(element["nameTypePart"]);
+          }
+        } else {}
+      }
+
+      setState(() {
+        allData = newAllData;
+        partsImageUrl = newPartsImageUrl;
+        _isLoading = false;
+      });
+    } else {
+      print("Error getting data");
     }
-
-    setState(() {
-      allData = newAllData;
-      partsImageUrl = newPartsImageUrl;
-    });
   }
 
   @override
@@ -97,8 +111,11 @@ class _PartsSelectionState extends State<PartsSelection> {
         ],
         body: partData.isEmpty
             ? Center(
-                child: Text(
-                    'Brak danych dla $selectedBrand $selectecdModel $selectecdYear'))
+                child: partData.length == 0
+                    ? Text(
+                        'Brak danych dla $selectedBrand $selectecdModel $selectecdYear')
+                    : CircularProgressIndicator(),
+              )
             : ListView.builder(
                 itemCount: partData.length,
                 itemBuilder: (context, index) => Card(

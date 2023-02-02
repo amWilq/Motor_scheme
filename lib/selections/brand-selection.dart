@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:motor_scheme/selections/type-selection.dart';
+import 'package:provider/provider.dart';
+
+import '../fav_page/fav_page.dart';
 import '../models/brandData.dart';
-import 'type-selection.dart';
+import '../provider/dark_theme_provider.dart';
 
-class BrandSelection extends StatefulWidget {
-  const BrandSelection({super.key});
+class BrandSelection extends StatelessWidget {
+  BrandSelection({super.key});
 
-  @override
-  State<BrandSelection> createState() => _BrandSelectionState();
-}
-
-class _BrandSelectionState extends State<BrandSelection> {
+  int currentIndex = 0;
   static List<String> brand = ['Honda', 'Yamaha', 'Kawasaki', 'Suzuki', 'KTM'];
   static List url = [
     'assets/images/honda.jpg',
@@ -21,40 +22,43 @@ class _BrandSelectionState extends State<BrandSelection> {
 
   final List<BrandDataModel> brandData = List.generate(brand.length,
       (index) => BrandDataModel(brand[index], '${url[index]}', brand[index]));
-
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          backgroundColor: Colors.grey,
-          title: const Text('WYBIERZ TWOJA MARKĘ!'),
-        ),
-        body: ListView.builder(
-            itemCount: brandData.length,
-            itemBuilder: (context, index) {
-              return Card(
-                child: ListTile(
-                  title: Text(brandData[index].name),
-                  leading: SizedBox(
-                    width: 100,
-                    height: 100,
-                    child: Image.asset(brandData[index].imageUtl),
-                  ),
-                  onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) =>
-                          TypeSelection(selectedBrand: brandData[index].name),
-                      settings: RouteSettings(
-                        arguments: brandData,
-                      ),
-                    ));
-                  },
-                ),
-              );
-            }),
+    final themeState = Provider.of<DarkThemeProvider>(context);
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text('WYBIERZ TWOJA MARKĘ!'),
       ),
+      body: ListView.builder(
+          shrinkWrap: true,
+          itemCount: brandData.length,
+          itemBuilder: (context, index) {
+            return Card(
+              child: ListTile(
+                title: Text(brandData[index].name),
+                leading: SizedBox(
+                  width: 100,
+                  height: 100,
+                  child: Image.asset(brandData[index].imageUtl),
+                ),
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) =>
+                        TypeSelection(selectedBrand: brandData[index].name),
+                  ));
+                },
+              ),
+            );
+          }),
+      bottomNavigationBar: SwitchListTile(
+          value: themeState.getDarkTheme,
+          secondary: Icon(themeState.getDarkTheme
+              ? Icons.dark_mode_outlined
+              : Icons.light_mode_outlined),
+          onChanged: (bool value) {
+            themeState.setDarkTheme = value;
+          }),
     );
   }
 }

@@ -7,22 +7,16 @@ import 'package:motor_scheme/colors/colors.dart';
 import '../cubits/fav_cubit.dart';
 import '../models/vehicle_model.dart';
 import 'parts-selection.dart';
+import 'package:http/http.dart' as http;
 
 class TypeSelection extends StatefulWidget {
   final String selectedBrand;
-  const TypeSelection({
+  TypeSelection({
     required this.selectedBrand,
   });
 
   @override
   State<TypeSelection> createState() => _SelectionState();
-}
-
-class ScreenArguments {
-  final String title;
-  final String message;
-
-  ScreenArguments(this.title, this.message);
 }
 
 class _SelectionState extends State<TypeSelection> {
@@ -41,9 +35,17 @@ class _SelectionState extends State<TypeSelection> {
   }
 
   Future<dynamic> _loadData() async {
-    String xmlString = await rootBundle.loadString('data/brand-data.json');
-    dynamic parsedJson = json.decode(xmlString);
-    return parsedJson;
+    String url =
+        "https://raw.githubusercontent.com/amWilq/Motor_scheme/master/data/brand-data.json";
+    Uri uri = Uri.parse(url);
+    http.Response response = await http.get(uri);
+    if (response.statusCode == 200) {
+      String data = response.body;
+      dynamic parsedJson = json.decode(data);
+      return parsedJson;
+    } else {
+      print("Error getting data");
+    }
   }
 
   findAllModelsForSelectedOptions(
@@ -97,162 +99,169 @@ class _SelectionState extends State<TypeSelection> {
     }
   }
 
+  int currentIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     final selectedBrand = widget.selectedBrand;
     getBackgroundColor(selectedBrand);
     findAllTypesForSelectedBrand(selectedBrand);
     findAllYearsForSelectedBrand(selectedBrand);
-
     return FutureBuilder<List<dynamic>?>(
       future: findAllYearsForSelectedBrand(selectedBrand),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           yearsList = snapshot.data!;
           return Scaffold(
-              appBar: AppBar(
-                leading: IconButton(
-                  icon: const Icon(Icons.arrow_back),
-                  onPressed: () => Navigator.of(context).pop(),
-                ),
-                backgroundColor: getBackgroundColor(selectedBrand),
-                title: Text('WYBÓR MODELU'),
-                centerTitle: true,
+            appBar: AppBar(
+              leading: IconButton(
+                icon: Icon(Icons.arrow_back),
+                onPressed: () => Navigator.of(context).pop(),
               ),
-              body: ListView(
-                children: <Widget>[
-                  Center(
-                    child: DropdownButtonFormField<String>(
-                        decoration:
-                            const InputDecoration(labelText: '01. ROCZNIK:'),
-                        value: null,
-                        items: yearsList
-                            .map((year) => DropdownMenuItem<String>(
-                                  value: year,
-                                  child: Text(
-                                    year,
-                                    style: TextStyle(fontSize: 24),
-                                  ),
-                                ))
-                            .toList(),
-                        onChanged: (item) =>
-                            {setState(() => selectecdYear = item)}),
-                  ),
-                  Center(
-                    child: DropdownButtonFormField<String>(
-                        decoration: const InputDecoration(
-                          labelText: '02. RODZAJ:',
-                        ),
-                        value: null,
-                        items: typesList
-                            .map((typesList) => DropdownMenuItem<String>(
-                                  value: typesList,
-                                  enabled: selectecdYear != null,
-                                  child: Text(
-                                    typesList,
-                                    style: const TextStyle(fontSize: 24),
-                                  ),
-                                ))
-                            .toList(),
-                        onChanged: (category) => setState(() {
-                              selectecdCategory = category;
-                              findAllModelsForSelectedOptions(selectecdYear,
-                                  selectecdCategory, selectedBrand);
-                            })),
-                  ),
-                  Center(
-                      child: DropdownButtonFormField<String>(
-                    decoration: const InputDecoration(
-                      labelText: '03. MODEL: ',
-                    ),
-                    value: null,
-                    items: modelsList
-                        .map((model) => DropdownMenuItem<String>(
-                            value: model,
-                            enabled: selectecdYear != null,
-                            child: Text(
-                              model,
-                              style: const TextStyle(fontSize: 24),
-                            )))
-                        .toList(),
-                    onChanged: (model) => setState(
-                      () => selectecdModel = model!,
-                    ),
-                  )),
-                  Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                    IconButton(
-                      padding: EdgeInsets.zero,
-                      icon: Icon(Icons.arrow_forward_ios,
-                          size: 70.0,
-                          color: selectecdModel == null
-                              ? Colors.grey
-                              : getBackgroundColor(selectedBrand)),
-                      onPressed: (selectecdYear != null &&
-                              selectecdModel != null &&
-                              selectecdCategory != null)
-                          ? () {
-                              Navigator.of(context).pushReplacement(
-                                MaterialPageRoute(
-                                  builder: (context) => PartsSelection(
-                                      selectedBrand: selectedBrand,
-                                      selectecdYear: selectecdYear!,
-                                      selectecdModel: selectecdModel!,
-                                      selectecdCategory: selectecdCategory!,
-                                      colorBrand:
-                                          getBackgroundColor(selectedBrand)),
+              backgroundColor: getBackgroundColor(selectedBrand),
+              title: Text('WYBÓR MODELU'),
+              centerTitle: true,
+            ),
+            body: ListView(
+              children: <Widget>[
+                Center(
+                  child: DropdownButtonFormField<String>(
+                      decoration: InputDecoration(labelText: '01. ROCZNIK:'),
+                      value: null,
+                      items: yearsList
+                          .map((year) => DropdownMenuItem<String>(
+                                value: year,
+                                child: Text(
+                                  year,
+                                  style: TextStyle(fontSize: 24),
                                 ),
-                              );
-                            }
-                          : null,
-                    ),
-                    SizedBox(
-                      height: 24,
-                    ),
-                    IconButton(
-                      padding: EdgeInsets.zero,
-                      icon: Icon(
-                        Icons.favorite,
+                              ))
+                          .toList(),
+                      onChanged: (item) =>
+                          {setState(() => selectecdYear = item)}),
+                ),
+                Center(
+                  child: DropdownButtonFormField<String>(
+                      decoration: InputDecoration(
+                        labelText: '02. RODZAJ:',
+                      ),
+                      value: null,
+                      items: typesList
+                          .map((typesList) => DropdownMenuItem<String>(
+                                value: typesList,
+                                enabled: selectecdYear != null,
+                                child: Text(
+                                  typesList,
+                                  style: TextStyle(fontSize: 24),
+                                ),
+                              ))
+                          .toList(),
+                      onChanged: (category) => setState(() {
+                            selectecdCategory = category;
+                            findAllModelsForSelectedOptions(selectecdYear,
+                                selectecdCategory, selectedBrand);
+                          })),
+                ),
+                Center(
+                    child: DropdownButtonFormField<String>(
+                  decoration: InputDecoration(
+                    labelText: '03. MODEL: ',
+                  ),
+                  value: null,
+                  items: modelsList
+                      .map((model) => DropdownMenuItem<String>(
+                          value: model,
+                          enabled: selectecdYear != null,
+                          child: Text(
+                            model,
+                            style: TextStyle(fontSize: 24),
+                          )))
+                      .toList(),
+                  onChanged: (model) => setState(
+                    () => selectecdModel = model!,
+                  ),
+                )),
+                Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                  IconButton(
+                    padding: EdgeInsets.zero,
+                    icon: Icon(Icons.arrow_forward_ios,
                         size: 70.0,
                         color: selectecdModel == null
                             ? Colors.grey
-                            : getBackgroundColor(selectedBrand),
-                      ),
-                      onPressed: (selectecdYear != null &&
-                              selectecdModel != null &&
-                              selectecdCategory != null)
-                          ? () {
-                              context
-                                  .read<FavCubit>()
-                                  .addFavorites(VehicleModel(
-                                    brand: selectedBrand,
-                                    type: selectecdCategory!,
-                                    year: selectecdYear!,
-                                    model: selectecdModel!,
-                                  ));
-                              showDialog(
-                                context: context,
-                                builder: (context) => AlertDialog(
-                                  title: const Text('Ulubiony!'),
-                                  content: const Text(
-                                      'Twój model został dodany do ulubionych!'),
-                                  actions: [
-                                    TextButton(
-                                      onPressed: () => Navigator.pop(context),
-                                      child: Text('OK'),
-                                    ),
-                                  ],
-                                ),
-                              );
-                            }
-                          : null,
+                            : getBackgroundColor(selectedBrand)),
+                    onPressed: (selectecdYear != null &&
+                            selectecdModel != null &&
+                            selectecdCategory != null)
+                        ? () {
+                            Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(
+                                builder: (context) => PartsSelection(
+                                    selectedBrand: selectedBrand,
+                                    selectecdYear: selectecdYear!,
+                                    selectecdModel: selectecdModel!,
+                                    selectecdCategory: selectecdCategory!,
+                                    colorBrand:
+                                        getBackgroundColor(selectedBrand)),
+                              ),
+                            );
+                          }
+                        : null,
+                  ),
+                  SizedBox(
+                    height: 24,
+                  ),
+                  IconButton(
+                    padding: EdgeInsets.zero,
+                    icon: Icon(
+                      Icons.favorite,
+                      size: 70.0,
+                      color: selectecdModel == null
+                          ? Colors.grey
+                          : getBackgroundColor(selectedBrand),
                     ),
-                  ])
-                ],
-              ));
+                    onPressed: (selectecdYear != null &&
+                            selectecdModel != null &&
+                            selectecdCategory != null)
+                        ? () {
+                            context.read<FavCubit>().addFavorites(VehicleModel(
+                                  brand: selectedBrand,
+                                  type: selectecdCategory!,
+                                  year: selectecdYear!,
+                                  model: selectecdModel!,
+                                ));
+                            showDialog(
+                              context: context,
+                              builder: (context) => AlertDialog(
+                                title: Text('Ulubiony!'),
+                                content: Text(
+                                    'Twój model został dodany do ulubionych!'),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () => Navigator.pop(context),
+                                    child: Text('OK'),
+                                  ),
+                                ],
+                              ),
+                            );
+                          }
+                        : null,
+                  ),
+                ])
+              ],
+            ),
+          );
         } else if (snapshot.hasError) {
           return Text("${snapshot.error}");
         }
-        return CircularProgressIndicator();
+        return Center(
+          child: SizedBox(
+            width: 30,
+            height: 30,
+            child: CircularProgressIndicator(
+              strokeWidth: 2.0,
+            ),
+          ),
+        );
       },
     );
   }

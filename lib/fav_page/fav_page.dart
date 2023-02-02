@@ -4,6 +4,7 @@ import 'package:motor_scheme/cubits/fav_cubit.dart';
 import 'package:motor_scheme/selections/parts-selection.dart';
 
 import '../main.dart';
+import '../selections/brand-selection.dart';
 
 class FavouritePage extends StatelessWidget {
   const FavouritePage({Key? key}) : super(key: key);
@@ -13,10 +14,10 @@ class FavouritePage extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           leading: IconButton(
-            icon: const Icon(Icons.arrow_back),
-            onPressed: () => Navigator.of(context)
-                .push(MaterialPageRoute(builder: (context) => MyApp())),
-          ),
+              icon: Icon(Icons.arrow_back),
+              onPressed: () => Navigator.of(context).pop()),
+
+          /// poprawić wracanie!!!
           backgroundColor: Colors.black,
           title: Text('Ulubione'),
           centerTitle: true,

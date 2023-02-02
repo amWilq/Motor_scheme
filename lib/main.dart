@@ -1,72 +1,115 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:motor_scheme/fav_page/fav_page.dart';
+import 'package:motor_scheme/provider/dark_theme_provider.dart';
+import 'package:motor_scheme/provider/screen-index-provider.dart';
+import 'package:motor_scheme/selections/brand-selection.dart';
+import 'package:motor_scheme/widget/theme_data.dart';
+
+import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
+import 'package:provider/provider.dart';
 
 import 'cubits/fav_cubit.dart';
-import 'fav_page/fav_page.dart';
-import 'selections/brand-selection.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
-class MyApp extends StatefulWidget {
-  const MyApp({super.key});
+class MyApp extends StatelessWidget {
+  MyApp({Key? key}) : super(key: key);
 
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
+  DarkThemeProvider themeChangeProvider = DarkThemeProvider();
 
-class _MyAppState extends State<MyApp> {
-  int currentIndex = 0;
-
-  final screens = [
-    const BrandSelection(),
-    const FavouritePage(),
-  ];
-
-  void _navigateToFeed() {
-    setState(() {
-      currentIndex = 1;
-    });
+  void getCurrentAppTheme() async {
+    themeChangeProvider.setDarkTheme =
+        await themeChangeProvider.darkThemePreference.getTheme();
   }
 
   @override
+  void initState() {
+    getCurrentAppTheme();
+    initState();
+  }
+
+  int currentIndex = 0;
+
   Widget build(BuildContext context) {
-    return MaterialApp(
-      initialRoute: '/',
-      routes: {},
-      home: BlocProvider<FavCubit>(
-        create: (context) => FavCubit(),
-        child: Scaffold(
-          body: Center(
-            child: screens.elementAt(currentIndex),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) {
+          return themeChangeProvider;
+        }),
+      ],
+      child:
+          Consumer<DarkThemeProvider>(builder: (context, themeProvider, child) {
+        return Center(
+          child: MaterialApp(
+            initialRoute: '/',
+            debugShowCheckedModeBanner: false,
+            theme: Styles.themeData(themeProvider.getDarkTheme, context),
+            home: BlocProvider<FavCubit>(
+                create: (context) => FavCubit(), child: MainPage()),
           ),
-          bottomNavigationBar: BottomNavigationBar(
-              iconSize: 32,
-              selectedItemColor: Colors.white,
-              unselectedItemColor: Colors.white70,
-              backgroundColor: Colors.grey,
-              type: BottomNavigationBarType.fixed,
-              showUnselectedLabels: false,
-              showSelectedLabels: false,
-              onTap: (index) {
-                currentIndex = index;
-                setState(() {});
-              },
-              currentIndex: currentIndex,
-              items: const [
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.home),
-                  label: 'Home',
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.favorite),
-                  label: 'Feed',
-                ),
-              ]),
+        );
+      }),
+    );
+  }
+}
+
+class MainPage extends StatefulWidget {
+  const MainPage({Key? key}) : super(key: key);
+
+  @override
+  State<MainPage> createState() => _MainPageState();
+}
+
+class _MainPageState extends State<MainPage> {
+  Color mainColor = Color(0xFF2631C1);
+  final PersistentTabController _controller =
+      PersistentTabController(initialIndex: 0);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: PersistentTabView(
+        context,
+        controller: _controller,
+        itemAnimationProperties: ItemAnimationProperties(
+          // Navigation Bar's items animation properties.
+          duration: Duration(milliseconds: 200),
+          curve: Curves.ease,
         ),
+        screenTransitionAnimation: ScreenTransitionAnimation(
+          // Screen transition animation on change of selected tab.
+          animateTabTransition: true,
+          curve: Curves.ease,
+          duration: Duration(milliseconds: 200),
+        ),
+        screens: [
+          BrandSelection(),
+          FavouritePage(),
+        ],
+        items: _navBarsItems(),
+        navBarStyle: NavBarStyle.style5,
       ),
     );
+  }
+
+  List<PersistentBottomNavBarItem> _navBarsItems() {
+    return [
+      PersistentBottomNavBarItem(
+        icon: Icon(Icons.home_outlined),
+        title: ("Home"),
+        activeColorPrimary: mainColor,
+        inactiveColorPrimary: CupertinoColors.systemGrey,
+      ),
+      PersistentBottomNavBarItem(
+        icon: Icon(Icons.favorite_border_outlined),
+        title: ("Favorite"),
+        activeColorPrimary: mainColor,
+        inactiveColorPrimary: CupertinoColors.systemGrey,
+      ),
+    ];
   }
 }
