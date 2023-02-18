@@ -3,9 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:motor_scheme/cubits/fav_cubit.dart';
 import 'package:motor_scheme/selections/parts-selection.dart';
 
-import '../main.dart';
-import '../selections/brand-selection.dart';
-
 class FavouritePage extends StatelessWidget {
   const FavouritePage({Key? key}) : super(key: key);
 
@@ -13,12 +10,6 @@ class FavouritePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          leading: IconButton(
-              icon: Icon(Icons.arrow_back),
-              onPressed: () => Navigator.of(context).pop()),
-
-          /// poprawić wracanie!!!
-          backgroundColor: Colors.black,
           title: Text('Ulubione'),
           centerTitle: true,
         ),

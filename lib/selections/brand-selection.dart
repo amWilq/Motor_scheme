@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:motor_scheme/main.dart';
 import 'package:motor_scheme/selections/type-selection.dart';
 import 'package:provider/provider.dart';
 
@@ -24,7 +25,6 @@ class BrandSelection extends StatelessWidget {
       (index) => BrandDataModel(brand[index], '${url[index]}', brand[index]));
   @override
   Widget build(BuildContext context) {
-    final themeState = Provider.of<DarkThemeProvider>(context);
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -51,14 +51,7 @@ class BrandSelection extends StatelessWidget {
               ),
             );
           }),
-      bottomNavigationBar: SwitchListTile(
-          value: themeState.getDarkTheme,
-          secondary: Icon(themeState.getDarkTheme
-              ? Icons.dark_mode_outlined
-              : Icons.light_mode_outlined),
-          onChanged: (bool value) {
-            themeState.setDarkTheme = value;
-          }),
+      drawer: NavigationDrawer(),
     );
   }
 }

@@ -5,6 +5,7 @@ import 'package:motor_scheme/fav_page/fav_page.dart';
 import 'package:motor_scheme/provider/dark_theme_provider.dart';
 import 'package:motor_scheme/provider/screen-index-provider.dart';
 import 'package:motor_scheme/selections/brand-selection.dart';
+import 'package:motor_scheme/selections/test.dart';
 import 'package:motor_scheme/widget/theme_data.dart';
 
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
@@ -65,7 +66,6 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  Color mainColor = Color(0xFF2631C1);
   final PersistentTabController _controller =
       PersistentTabController(initialIndex: 0);
 
@@ -86,10 +86,7 @@ class _MainPageState extends State<MainPage> {
           curve: Curves.ease,
           duration: Duration(milliseconds: 200),
         ),
-        screens: [
-          BrandSelection(),
-          FavouritePage(),
-        ],
+        screens: [BrandSelection(), FavouritePage(), NotesPage()],
         items: _navBarsItems(),
         navBarStyle: NavBarStyle.style5,
       ),
@@ -101,15 +98,63 @@ class _MainPageState extends State<MainPage> {
       PersistentBottomNavBarItem(
         icon: Icon(Icons.home_outlined),
         title: ("Home"),
-        activeColorPrimary: mainColor,
         inactiveColorPrimary: CupertinoColors.systemGrey,
       ),
       PersistentBottomNavBarItem(
         icon: Icon(Icons.favorite_border_outlined),
         title: ("Favorite"),
-        activeColorPrimary: mainColor,
+        inactiveColorPrimary: CupertinoColors.systemGrey,
+      ),
+      PersistentBottomNavBarItem(
+        icon: Icon(Icons.favorite_border_outlined),
+        title: ("Favorite"),
         inactiveColorPrimary: CupertinoColors.systemGrey,
       ),
     ];
   }
+}
+
+class NavigationDrawer extends StatelessWidget {
+  const NavigationDrawer({super.key});
+
+  @override
+  Widget build(BuildContext context) => Drawer(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            bulidHeader(context),
+            bulidMenuItems(context),
+          ],
+        ),
+      );
+}
+
+Widget bulidHeader(BuildContext context) => Container(
+      padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
+    );
+Widget bulidMenuItems(BuildContext context) {
+  final themeState = Provider.of<DarkThemeProvider>(context);
+
+  return (Container(
+    padding: const EdgeInsets.all(24),
+    child: Wrap(
+      runSpacing: 16,
+      children: [
+        ListTile(
+          leading: const Icon(Icons.language_outlined),
+          title: const Text('Język'),
+          onTap: (() {}),
+        ),
+        SwitchListTile(
+            title: const Text('Ciemny motyw'),
+            value: themeState.getDarkTheme,
+            secondary: Icon(themeState.getDarkTheme
+                ? Icons.dark_mode_outlined
+                : Icons.light_mode_outlined),
+            onChanged: (bool value) {
+              themeState.setDarkTheme = value;
+            }),
+      ],
+    ),
+  ));
 }
