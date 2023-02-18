@@ -36,7 +36,7 @@ class _SelectionState extends State<TypeSelection> {
 
   Future<dynamic> _loadData() async {
     String url =
-        "https://raw.githubusercontent.com/amWilq/Motor_scheme/master/data/brand-data.json";
+        "https://raw.githubusercontent.com/amWilq/Motor_scheme/lukasz-dodatkowy/data/brand-data.json";
     Uri uri = Uri.parse(url);
     http.Response response = await http.get(uri);
     if (response.statusCode == 200) {

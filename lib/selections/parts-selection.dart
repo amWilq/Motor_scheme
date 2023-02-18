@@ -49,7 +49,6 @@ class _PartsSelectionState extends State<PartsSelection> {
     if (response.statusCode == 200) {
       String data = response.body;
       dynamic parsedJson = json.decode(data);
-      print(parsedJson);
 
       List newAllData = [];
       String newPartsImageUrl = "";

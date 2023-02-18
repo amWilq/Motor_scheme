@@ -38,7 +38,6 @@ class NotesDatabase {
   Future<List<Bike>> readAllBikes() async {
     final db = await instance.database;
     final result = await db.query(tableBike);
-    print(result.map((json) => Bike.fromJson(json)).toList());
     return result.map((json) => Bike.fromJson(json)).toList();
   }
 

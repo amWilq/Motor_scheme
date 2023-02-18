@@ -86,7 +86,9 @@ class _MainPageState extends State<MainPage> {
           curve: Curves.ease,
           duration: Duration(milliseconds: 200),
         ),
-        screens: [BrandSelection(), FavouritePage(), NotesPage()],
+        screens: [BrandSelection(), FavouritePage()],
+        // screens: [BrandSelection(), FavouritePage(), NotesPage()],
+
         items: _navBarsItems(),
         navBarStyle: NavBarStyle.style5,
       ),
@@ -105,11 +107,11 @@ class _MainPageState extends State<MainPage> {
         title: ("Favorite"),
         inactiveColorPrimary: CupertinoColors.systemGrey,
       ),
-      PersistentBottomNavBarItem(
-        icon: Icon(Icons.favorite_border_outlined),
-        title: ("Favorite"),
-        inactiveColorPrimary: CupertinoColors.systemGrey,
-      ),
+      // PersistentBottomNavBarItem(
+      //   icon: Icon(Icons.favorite_border_outlined),
+      //   title: ("Favorite"),
+      //   inactiveColorPrimary: CupertinoColors.systemGrey,
+      // ),
     ];
   }
 }

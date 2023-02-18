@@ -90,7 +90,6 @@ class _NotesPageState extends State<NotesPage> {
       itemBuilder: (context, index) {
         final note = notes[index];
         Text(note.toString());
-        // print(notes[index].model);
         return Container();
       },
     );
