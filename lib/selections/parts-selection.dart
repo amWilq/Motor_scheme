@@ -43,7 +43,7 @@ class _PartsSelectionState extends State<PartsSelection> {
     List<String> nameTypeParts = [];
 
     String url =
-        "https://raw.githubusercontent.com/amWilq/Motor_scheme/master/data/data.json";
+        "https://raw.githubusercontent.com/amWilq/Motor_scheme/lukasz-dodatkowy/data/data.json";
     Uri uri = Uri.parse(url);
     http.Response response = await http.get(uri);
     if (response.statusCode == 200) {
